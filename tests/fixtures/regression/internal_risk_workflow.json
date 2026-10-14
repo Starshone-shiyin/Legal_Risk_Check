@@ -1,0 +1,639 @@
+{
+  "version": "0.1.0",
+  "scope": "fixture internal risk workflow for AI technology enterprise lifecycle gates",
+  "workflow": {
+    "company_id": "demo-ai-enterprise",
+    "as_of": "2026-07-28T09:00:00+08:00",
+    "risk_items": [
+      {
+        "risk_id": "risk-training-data-cross-border-001",
+        "company_id": "demo-ai-enterprise",
+        "project_id": "project-medical-copilot",
+        "title": "Training data and overseas cloud arrangement require verification",
+        "lifecycle_stage": "model_training",
+        "risk_domain": "data_model_governance",
+        "risk_level": "high",
+        "status": "mitigating",
+        "trigger_facts": [
+          "The project plans to use customer and medical data for model training.",
+          "A third-party overseas cloud service is included in the proposed architecture."
+        ],
+        "evidence_refs": [
+          "data-inventory-v1",
+          "cloud-architecture-v2"
+        ],
+        "legal_query_seeds": [
+          "Personal information used for model training and overseas cloud processing compliance requirements",
+          "Requirements for reviewing data export arrangements before model training"
+        ],
+        "missing_materials": [
+          "data source authorization record",
+          "overseas recipient assessment record"
+        ],
+        "task_ids": [
+          "task-data-authorization-001",
+          "task-cloud-assessment-001"
+        ],
+        "review_id": "review-training-gate-001"
+      },
+      {
+        "risk_id": "risk-open-source-and-trade-secret-001",
+        "company_id": "demo-ai-enterprise",
+        "project_id": "project-medical-copilot",
+        "title": "Open-source components and model assets lack release review",
+        "lifecycle_stage": "product_launch",
+        "risk_domain": "technology_ip",
+        "risk_level": "high",
+        "status": "open",
+        "trigger_facts": [
+          "The release package includes externally sourced model and code dependencies.",
+          "The engineering exit checklist does not yet include model-weight handover verification."
+        ],
+        "evidence_refs": [
+          "dependency-lockfile-202607",
+          "engineering-offboarding-checklist"
+        ],
+        "legal_query_seeds": [
+          "Open-source license obligations for AI SaaS delivery",
+          "Protection and evidence retention for model weights and technical secrets"
+        ],
+        "missing_materials": [
+          "software bill of materials",
+          "open-source license review result"
+        ],
+        "task_ids": [
+          "task-sbom-review-001"
+        ],
+        "review_id": "review-launch-gate-001"
+      },
+      {
+        "risk_id": "risk-third-party-model-contract-001",
+        "company_id": "demo-ai-enterprise",
+        "project_id": "project-medical-copilot",
+        "title": "Third-party model contract does not define customer data responsibilities",
+        "lifecycle_stage": "commercialization",
+        "risk_domain": "product_commercialization",
+        "risk_level": "medium",
+        "status": "open",
+        "trigger_facts": [
+          "The customer agreement references a third-party foundation model API.",
+          "Data processing, output ownership, and incident cooperation are not allocated clearly."
+        ],
+        "evidence_refs": [
+          "customer-master-agreement-draft",
+          "model-provider-terms"
+        ],
+        "legal_query_seeds": [
+          "Allocation of data processing and output responsibilities in AI SaaS agreements"
+        ],
+        "missing_materials": [
+          "third-party processor agreement",
+          "customer-facing data processing appendix"
+        ],
+        "task_ids": [
+          "task-contract-data-boundary-001"
+        ],
+        "review_id": "review-commercial-gate-001"
+      }
+    ],
+    "gates": [
+      {
+        "gate_id": "gate-model-training-001",
+        "company_id": "demo-ai-enterprise",
+        "project_id": "project-medical-copilot",
+        "title": "Model training readiness gate",
+        "lifecycle_stage": "model_training",
+        "decision": "rectification_required",
+        "owner": "Data governance lead",
+        "risk_item_ids": [
+          "risk-training-data-cross-border-001"
+        ],
+        "checks": [
+          {
+            "check_id": "data-source",
+            "title": "Data source and authorization",
+            "status": "missing",
+            "evidence_refs": []
+          },
+          {
+            "check_id": "cross-border",
+            "title": "Cross-border architecture review",
+            "status": "missing",
+            "evidence_refs": []
+          },
+          {
+            "check_id": "access-control",
+            "title": "Training environment access control",
+            "status": "passed",
+            "evidence_refs": [
+              "training-access-matrix"
+            ]
+          }
+        ],
+        "review_id": "review-training-gate-001",
+        "updated_at": "2026-07-28T15:15:28.663453Z",
+        "decision_history": [
+          {
+            "decision": "rectification_required",
+            "decided_at": "2026-07-28T15:15:28.663453Z",
+            "reviewer": "1",
+            "conclusion": "1"
+          }
+        ]
+      },
+      {
+        "gate_id": "gate-product-launch-001",
+        "company_id": "demo-ai-enterprise",
+        "project_id": "project-medical-copilot",
+        "title": "Product launch readiness gate",
+        "lifecycle_stage": "product_launch",
+        "decision": "conditional_approval",
+        "owner": "Product compliance lead",
+        "risk_item_ids": [
+          "risk-open-source-and-trade-secret-001"
+        ],
+        "checks": [
+          {
+            "check_id": "sbom",
+            "title": "Open-source component list",
+            "status": "missing",
+            "evidence_refs": []
+          },
+          {
+            "check_id": "release-review",
+            "title": "Release and technical-secret review",
+            "status": "passed",
+            "evidence_refs": [
+              "release-review-record"
+            ]
+          }
+        ],
+        "review_id": "review-launch-gate-001"
+      },
+      {
+        "gate_id": "gate-commercialization-001",
+        "company_id": "demo-ai-enterprise",
+        "project_id": "project-medical-copilot",
+        "title": "Commercialization readiness gate",
+        "lifecycle_stage": "commercialization",
+        "decision": "conditional_approval",
+        "owner": "Legal counsel",
+        "risk_item_ids": [
+          "risk-third-party-model-contract-001"
+        ],
+        "checks": [
+          {
+            "check_id": "contract-boundary",
+            "title": "Customer and provider data boundary",
+            "status": "missing",
+            "evidence_refs": []
+          }
+        ],
+        "review_id": "review-commercial-gate-001"
+      }
+    ],
+    "remediation_tasks": [
+      {
+        "task_id": "task-data-authorization-001",
+        "company_id": "demo-ai-enterprise",
+        "project_id": "project-medical-copilot",
+        "risk_id": "risk-training-data-cross-border-001",
+        "title": "Complete the training data authorization inventory",
+        "owner": "Data governance lead",
+        "due_date": "2026-08-02",
+        "status": "pending_review",
+        "evidence_refs": [
+          "data-inventory-v1"
+        ],
+        "requires_manual_review": true,
+        "review_id": "review-task-data-authorization-001",
+        "updated_at": "2026-07-28T11:35:25.303243Z",
+        "status_history": [
+          {
+            "status": "in_progress",
+            "changed_at": "2026-07-27T09:00:00+08:00",
+            "changed_by": "Data governance lead",
+            "note": "Inventory started"
+          },
+          {
+            "status": "pending_review",
+            "changed_at": "2026-07-28T11:35:25.303243Z",
+            "changed_by": "internal-risk-workbench",
+            "note": "工作台更新为待复核"
+          }
+        ]
+      },
+      {
+        "task_id": "task-cloud-assessment-001",
+        "company_id": "demo-ai-enterprise",
+        "project_id": "project-medical-copilot",
+        "risk_id": "risk-training-data-cross-border-001",
+        "title": "Assess the overseas cloud and data export arrangement",
+        "owner": "Security compliance lead",
+        "due_date": "2026-08-03",
+        "status": "pending_review",
+        "evidence_refs": [
+          "test-1"
+        ],
+        "requires_manual_review": true,
+        "review_id": "review-task-cloud-assessment-001",
+        "updated_at": "2026-07-28T12:09:50.823228Z",
+        "status_history": [
+          {
+            "status": "in_progress",
+            "changed_at": "2026-07-28T12:09:33.649794Z",
+            "changed_by": "internal-risk-workbench",
+            "note": "工作台更新为整改中"
+          },
+          {
+            "status": "pending_review",
+            "changed_at": "2026-07-28T12:09:50.823228Z",
+            "changed_by": "internal-risk-workbench",
+            "note": "test"
+          }
+        ]
+      },
+      {
+        "task_id": "task-sbom-review-001",
+        "company_id": "demo-ai-enterprise",
+        "project_id": "project-medical-copilot",
+        "risk_id": "risk-open-source-and-trade-secret-001",
+        "title": "Produce an SBOM and complete open-source license review",
+        "owner": "Engineering manager",
+        "due_date": "2026-08-04",
+        "status": "pending_review",
+        "evidence_refs": [
+          "sbom-v1"
+        ],
+        "requires_manual_review": true,
+        "review_id": "review-task-sbom-001",
+        "updated_at": "2026-07-27T14:10:00+08:00",
+        "status_history": [
+          {
+            "status": "in_progress",
+            "changed_at": "2026-07-27T13:20:00+08:00",
+            "changed_by": "Engineering manager",
+            "note": "SBOM review initiated"
+          },
+          {
+            "status": "pending_review",
+            "changed_at": "2026-07-27T14:10:00+08:00",
+            "changed_by": "Engineering manager",
+            "note": "Evidence package submitted for manual review"
+          }
+        ]
+      },
+      {
+        "task_id": "task-contract-data-boundary-001",
+        "company_id": "demo-ai-enterprise",
+        "project_id": "project-medical-copilot",
+        "risk_id": "risk-third-party-model-contract-001",
+        "title": "Add data processing and model output allocation to the customer contract",
+        "owner": "Legal counsel",
+        "due_date": "2026-08-05",
+        "status": "blocked",
+        "evidence_refs": [],
+        "requires_manual_review": true,
+        "review_id": "review-task-contract-boundary-001",
+        "updated_at": "2026-07-27T16:30:00+08:00",
+        "status_history": [
+          {
+            "status": "blocked",
+            "changed_at": "2026-07-27T16:30:00+08:00",
+            "changed_by": "Legal counsel",
+            "note": "Waiting for model provider to confirm data-processing obligations"
+          }
+        ]
+      }
+    ],
+    "manual_reviews": [
+      {
+        "review_id": "review-training-gate-001",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "risk_gate",
+        "target_id": "gate-model-training-001",
+        "status": "changes_requested",
+        "reviewer": "1",
+        "conclusion": "1",
+        "reviewed_at": "2026-07-28T15:15:28.663453+00:00",
+        "decision_history": [
+          {
+            "status": "changes_requested",
+            "changed_at": "2026-07-28T15:15:28.663453+00:00",
+            "reviewer": "1",
+            "conclusion": "1"
+          }
+        ]
+      },
+      {
+        "review_id": "review-launch-gate-001",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "risk_gate",
+        "target_id": "gate-product-launch-001",
+        "status": "pending",
+        "reviewer": null,
+        "conclusion": null,
+        "reviewed_at": null
+      },
+      {
+        "review_id": "review-commercial-gate-001",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "risk_gate",
+        "target_id": "gate-commercialization-001",
+        "status": "pending",
+        "reviewer": null,
+        "conclusion": null,
+        "reviewed_at": null
+      },
+      {
+        "review_id": "review-task-data-authorization-001",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "remediation_task",
+        "target_id": "task-data-authorization-001",
+        "status": "pending",
+        "reviewer": null,
+        "conclusion": null,
+        "reviewed_at": null
+      },
+      {
+        "review_id": "review-task-cloud-assessment-001",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "remediation_task",
+        "target_id": "task-cloud-assessment-001",
+        "status": "pending",
+        "reviewer": null,
+        "conclusion": null,
+        "reviewed_at": null
+      },
+      {
+        "review_id": "review-task-sbom-001",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "remediation_task",
+        "target_id": "task-sbom-review-001",
+        "status": "pending",
+        "reviewer": null,
+        "conclusion": null,
+        "reviewed_at": null
+      },
+      {
+        "review_id": "review-task-contract-boundary-001",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "remediation_task",
+        "target_id": "task-contract-data-boundary-001",
+        "status": "pending",
+        "reviewer": null,
+        "conclusion": null,
+        "reviewed_at": null
+      }
+    ],
+    "guardrails": [
+      "Risk gates provide a workflow decision and do not replace legal or technical expert review.",
+      "Legal query seeds require retrieval of applicable authority before a legal conclusion is issued.",
+      "A remediation task marked pending_review remains subject to manual verification."
+    ],
+    "remediation_suggestions": [
+      {
+        "suggestion_id": "suggestion-7a75da4fb113",
+        "company_id": "demo-ai-enterprise",
+        "risk_id": "risk-training-data-cross-border-001",
+        "project_id": "project-medical-copilot",
+        "title": "补齐Training data and overseas cloud arrangement require verification的处理安排",
+        "suggested_action": "核对缺失材料并决定是否建立整改任务",
+        "suggested_owner_role": "数据与安全负责人",
+        "suggested_due_date": "2026-08-07",
+        "missing_materials": [
+          "data source authorization record",
+          "overseas recipient assessment record"
+        ],
+        "basis": [
+          "风险等级：high",
+          "data source authorization record",
+          "overseas recipient assessment record"
+        ],
+        "rule_version": "management-assistance-v1",
+        "generated_at": "2026-07-31T15:53:54.229140Z",
+        "status": "pending",
+        "adopted_by": null,
+        "adopted_at": null,
+        "task_id": null
+      },
+      {
+        "suggestion_id": "suggestion-3615523df84d",
+        "company_id": "demo-ai-enterprise",
+        "risk_id": "risk-open-source-and-trade-secret-001",
+        "project_id": "project-medical-copilot",
+        "title": "补齐Open-source components and model assets lack release review的处理安排",
+        "suggested_action": "核对缺失材料并决定是否建立整改任务",
+        "suggested_owner_role": "研发与知识产权负责人",
+        "suggested_due_date": "2026-08-07",
+        "missing_materials": [
+          "software bill of materials",
+          "open-source license review result"
+        ],
+        "basis": [
+          "风险等级：high",
+          "software bill of materials",
+          "open-source license review result"
+        ],
+        "rule_version": "management-assistance-v1",
+        "generated_at": "2026-07-31T15:53:54.229140Z",
+        "status": "pending",
+        "adopted_by": null,
+        "adopted_at": null,
+        "task_id": null
+      },
+      {
+        "suggestion_id": "suggestion-421439f4f724",
+        "company_id": "demo-ai-enterprise",
+        "risk_id": "risk-third-party-model-contract-001",
+        "project_id": "project-medical-copilot",
+        "title": "补齐Third-party model contract does not define customer data responsibilities的处理安排",
+        "suggested_action": "核对缺失材料并决定是否建立整改任务",
+        "suggested_owner_role": "产品与法务负责人",
+        "suggested_due_date": "2026-08-14",
+        "missing_materials": [
+          "third-party processor agreement",
+          "customer-facing data processing appendix"
+        ],
+        "basis": [
+          "风险等级：medium",
+          "third-party processor agreement",
+          "customer-facing data processing appendix"
+        ],
+        "rule_version": "management-assistance-v1",
+        "generated_at": "2026-07-31T15:53:54.229140Z",
+        "status": "pending",
+        "adopted_by": null,
+        "adopted_at": null,
+        "task_id": null
+      }
+    ],
+    "reminders": [
+      {
+        "reminder_id": "reminder-62bef422188c",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "risk_item",
+        "target_id": "risk-training-data-cross-border-001",
+        "reminder_type": "missing_material",
+        "title": "待补材料：Training data and overseas cloud arrangement require verification",
+        "detail": "data source authorization record、overseas recipient assessment record",
+        "rule_version": "management-assistance-v1",
+        "triggered_at": "2026-07-31T15:53:54.229140Z",
+        "idempotency_key": "demo-ai-enterprise:risk_item:risk-training-data-cross-border-001:missing_material:management-assistance-v1",
+        "status": "active",
+        "acknowledged_by": null,
+        "acknowledged_at": null
+      },
+      {
+        "reminder_id": "reminder-20535aefeca7",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "risk_item",
+        "target_id": "risk-open-source-and-trade-secret-001",
+        "reminder_type": "missing_material",
+        "title": "待补材料：Open-source components and model assets lack release review",
+        "detail": "software bill of materials、open-source license review result",
+        "rule_version": "management-assistance-v1",
+        "triggered_at": "2026-07-31T15:53:54.229140Z",
+        "idempotency_key": "demo-ai-enterprise:risk_item:risk-open-source-and-trade-secret-001:missing_material:management-assistance-v1",
+        "status": "active",
+        "acknowledged_by": null,
+        "acknowledged_at": null
+      },
+      {
+        "reminder_id": "reminder-a92a27a0b609",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "risk_item",
+        "target_id": "risk-third-party-model-contract-001",
+        "reminder_type": "missing_material",
+        "title": "待补材料：Third-party model contract does not define customer data responsibilities",
+        "detail": "third-party processor agreement、customer-facing data processing appendix",
+        "rule_version": "management-assistance-v1",
+        "triggered_at": "2026-07-31T15:53:54.229140Z",
+        "idempotency_key": "demo-ai-enterprise:risk_item:risk-third-party-model-contract-001:missing_material:management-assistance-v1",
+        "status": "active",
+        "acknowledged_by": null,
+        "acknowledged_at": null
+      },
+      {
+        "reminder_id": "reminder-93fe023d2117",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "remediation_task",
+        "target_id": "task-data-authorization-001",
+        "reminder_type": "due_soon",
+        "title": "临近到期：Complete the training data authorization inventory",
+        "detail": "计划完成日期：2026-08-02。系统仅提示，不改变任务状态。",
+        "rule_version": "management-assistance-v1",
+        "triggered_at": "2026-07-31T15:53:54.229140Z",
+        "idempotency_key": "demo-ai-enterprise:remediation_task:task-data-authorization-001:due_soon:management-assistance-v1",
+        "status": "active",
+        "acknowledged_by": null,
+        "acknowledged_at": null
+      },
+      {
+        "reminder_id": "reminder-516d33ace61e",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "remediation_task",
+        "target_id": "task-cloud-assessment-001",
+        "reminder_type": "due_soon",
+        "title": "临近到期：Assess the overseas cloud and data export arrangement",
+        "detail": "计划完成日期：2026-08-03。系统仅提示，不改变任务状态。",
+        "rule_version": "management-assistance-v1",
+        "triggered_at": "2026-07-31T15:53:54.229140Z",
+        "idempotency_key": "demo-ai-enterprise:remediation_task:task-cloud-assessment-001:due_soon:management-assistance-v1",
+        "status": "active",
+        "acknowledged_by": null,
+        "acknowledged_at": null
+      },
+      {
+        "reminder_id": "reminder-cb35da6bdf0c",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "remediation_task",
+        "target_id": "task-contract-data-boundary-001",
+        "reminder_type": "blocked",
+        "title": "整改受阻：Add data processing and model output allocation to the customer contract",
+        "detail": "请由责任人说明阻塞原因并决定后续安排。",
+        "rule_version": "management-assistance-v1",
+        "triggered_at": "2026-07-31T15:53:54.229140Z",
+        "idempotency_key": "demo-ai-enterprise:remediation_task:task-contract-data-boundary-001:blocked:management-assistance-v1",
+        "status": "active",
+        "acknowledged_by": null,
+        "acknowledged_at": null
+      },
+      {
+        "reminder_id": "reminder-c339c1ef694a",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "remediation_task",
+        "target_id": "task-sbom-review-001",
+        "reminder_type": "due_soon",
+        "title": "临近到期：Produce an SBOM and complete open-source license review",
+        "detail": "计划完成日期：2026-08-04。系统仅提示，不改变任务状态。",
+        "rule_version": "management-assistance-v1",
+        "triggered_at": "2026-08-01T05:18:43.672805Z",
+        "idempotency_key": "demo-ai-enterprise:remediation_task:task-sbom-review-001:due_soon:management-assistance-v1",
+        "status": "active",
+        "acknowledged_by": null,
+        "acknowledged_at": null
+      },
+      {
+        "reminder_id": "reminder-7fd4e594ab26",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "remediation_task",
+        "target_id": "task-data-authorization-001",
+        "reminder_type": "overdue",
+        "title": "已逾期：Complete the training data authorization inventory",
+        "detail": "计划完成日期：2026-08-02。系统仅提示，不改变任务状态。",
+        "rule_version": "management-assistance-v1",
+        "triggered_at": "2026-08-16T07:29:05.503977Z",
+        "idempotency_key": "demo-ai-enterprise:remediation_task:task-data-authorization-001:overdue:management-assistance-v1",
+        "status": "active",
+        "acknowledged_by": null,
+        "acknowledged_at": null
+      },
+      {
+        "reminder_id": "reminder-a2c13ff56572",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "remediation_task",
+        "target_id": "task-cloud-assessment-001",
+        "reminder_type": "overdue",
+        "title": "已逾期：Assess the overseas cloud and data export arrangement",
+        "detail": "计划完成日期：2026-08-03。系统仅提示，不改变任务状态。",
+        "rule_version": "management-assistance-v1",
+        "triggered_at": "2026-08-16T07:29:05.503977Z",
+        "idempotency_key": "demo-ai-enterprise:remediation_task:task-cloud-assessment-001:overdue:management-assistance-v1",
+        "status": "active",
+        "acknowledged_by": null,
+        "acknowledged_at": null
+      },
+      {
+        "reminder_id": "reminder-bee29fc23da0",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "remediation_task",
+        "target_id": "task-sbom-review-001",
+        "reminder_type": "overdue",
+        "title": "已逾期：Produce an SBOM and complete open-source license review",
+        "detail": "计划完成日期：2026-08-04。系统仅提示，不改变任务状态。",
+        "rule_version": "management-assistance-v1",
+        "triggered_at": "2026-08-16T07:29:05.503977Z",
+        "idempotency_key": "demo-ai-enterprise:remediation_task:task-sbom-review-001:overdue:management-assistance-v1",
+        "status": "active",
+        "acknowledged_by": null,
+        "acknowledged_at": null
+      },
+      {
+        "reminder_id": "reminder-e512cafab3ea",
+        "company_id": "demo-ai-enterprise",
+        "target_type": "remediation_task",
+        "target_id": "task-contract-data-boundary-001",
+        "reminder_type": "overdue",
+        "title": "已逾期：Add data processing and model output allocation to the customer contract",
+        "detail": "计划完成日期：2026-08-05。系统仅提示，不改变任务状态。",
+        "rule_version": "management-assistance-v1",
+        "triggered_at": "2026-08-16T07:29:05.503977Z",
+        "idempotency_key": "demo-ai-enterprise:remediation_task:task-contract-data-boundary-001:overdue:management-assistance-v1",
+        "status": "active",
+        "acknowledged_by": null,
+        "acknowledged_at": null
+      }
+    ]
+  }
+}

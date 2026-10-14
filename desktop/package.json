@@ -1,0 +1,57 @@
+{
+  "name": "riskflow-desktop",
+  "version": "0.5.2",
+  "private": true,
+  "description": "识险智控比赛演示桌面封装",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "electron .",
+    "start": "electron .",
+    "pack:dir": "electron-builder --dir",
+    "dist:win": "electron-builder --win nsis portable"
+  },
+  "devDependencies": {
+    "electron": "^37.2.6",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "cn.riskflow.competition",
+    "productName": "识险智控",
+    "artifactName": "RiskFlow-${version}-${arch}.${ext}",
+    "asar": true,
+    "files": [
+      "electron/**/*",
+      "package.json",
+      "README.md"
+    ],
+    "extraResources": [
+      { "from": "../web", "to": "web" },
+      { "from": "../config", "to": "config" },
+      { "from": "../knowledge_manifest.json", "to": "knowledge_manifest.json" },
+      { "from": "../src/knowledge", "to": "src/knowledge" },
+      { "from": "../tests/fixtures", "to": "tests/fixtures" },
+      { "from": "README-使用说明.md", "to": "README-使用说明.md" },
+      { "from": "runtime/data-seed", "to": "data-seed" },
+      { "from": "runtime/backend", "to": "backend" },
+      { "from": "runtime/qdrant", "to": "qdrant" }
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": ["nsis", "portable"],
+      "artifactName": "RiskFlow-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "artifactName": "RiskFlow-${version}-${arch}-setup.${ext}",
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "portable": {
+      "artifactName": "RiskFlow-${version}-${arch}-portable.${ext}"
+    }
+  }
+}

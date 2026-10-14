@@ -1,0 +1,732 @@
+{
+  "version": "0.4.7.0b",
+  "purpose": "Offline annotations for hidden enterprise legal-risk seeds. This file does not drive retrieval, rerank, anchor injection, risk supplement, or answer generation.",
+  "legal_domains": [
+    "personal_information_protection",
+    "cross_border_data_transfer",
+    "data_security",
+    "consumer_rights",
+    "employment_privacy",
+    "competition_law",
+    "corporate_governance",
+    "trade_secret",
+    "financial_regulation",
+    "education_compliance"
+  ],
+  "functional_types": [
+    "principle",
+    "definition",
+    "operative_rule",
+    "rights_remedy",
+    "procedural",
+    "liability",
+    "technical_standard",
+    "unrelated_or_contextual"
+  ],
+  "issue_levels": [
+    "primary",
+    "secondary",
+    "peripheral"
+  ],
+  "cases": [
+    {
+      "case_id": "seed_001_pipl_facial_attendance_complex",
+      "scenario_label": "Facial recognition gate attendance with weak alternative path",
+      "expected_domains": [
+        "personal_information_protection",
+        "employment_privacy"
+      ],
+      "primary_issues": [
+        "biometric_sensitive_info",
+        "notice_and_separate_consent",
+        "necessity_and_proportionality",
+        "alternative_method_burden",
+        "pipia_required"
+      ],
+      "secondary_issues": [
+        "access_and_security_measures"
+      ],
+      "peripheral_issues": [
+        "incident_response"
+      ],
+      "expected_statutes": [
+        {
+          "ref": "pipl::article_6",
+          "functional_type": "principle",
+          "supports": [
+            "necessity_and_proportionality"
+          ]
+        },
+        {
+          "ref": "pipl::article_16",
+          "functional_type": "operative_rule",
+          "supports": [
+            "alternative_method_burden"
+          ]
+        },
+        {
+          "ref": "pipl::article_17",
+          "functional_type": "operative_rule",
+          "supports": [
+            "notice_and_separate_consent"
+          ]
+        },
+        {
+          "ref": "pipl::article_28",
+          "functional_type": "definition",
+          "supports": [
+            "biometric_sensitive_info"
+          ]
+        },
+        {
+          "ref": "pipl::article_29",
+          "functional_type": "operative_rule",
+          "supports": [
+            "notice_and_separate_consent",
+            "biometric_sensitive_info"
+          ]
+        },
+        {
+          "ref": "pipl::article_30",
+          "functional_type": "operative_rule",
+          "supports": [
+            "notice_and_separate_consent",
+            "necessity_and_proportionality"
+          ]
+        },
+        {
+          "ref": "pipl::article_55",
+          "functional_type": "operative_rule",
+          "supports": [
+            "pipia_required",
+            "biometric_sensitive_info"
+          ]
+        },
+        {
+          "ref": "pipl::article_56",
+          "functional_type": "procedural",
+          "supports": [
+            "pipia_required"
+          ]
+        }
+      ],
+      "contaminating_domains": [
+        "data_security"
+      ],
+      "known_bad_evidence": [
+        {
+          "ref": "gb_t_35273_2020::section_10_2",
+          "reason": "Security incident notice is peripheral and should not replace sensitive personal information obligations."
+        },
+        {
+          "ref": "cybersecurity_law::article_13",
+          "reason": "General network-use clause does not ground employee facial recognition necessity or PIPIA."
+        }
+      ],
+      "notes": "The key test is whether retrieval finds PIPL sensitive personal information, necessity, consent, and impact-assessment rules rather than only GB/T definitions."
+    },
+    {
+      "case_id": "seed_002_employee_monitoring_software_complex",
+      "scenario_label": "Employee endpoint monitoring for trade-secret protection",
+      "expected_domains": [
+        "personal_information_protection",
+        "employment_privacy",
+        "trade_secret"
+      ],
+      "primary_issues": [
+        "employee_monitoring_notice_scope",
+        "necessity_and_minimization",
+        "refusal_and_work_system_access",
+        "commercial_secret_protection_balance"
+      ],
+      "secondary_issues": [
+        "security_audit_boundary"
+      ],
+      "peripheral_issues": [
+        "incident_response",
+        "state_secret_leakage"
+      ],
+      "expected_statutes": [
+        {
+          "ref": "pipl::article_5",
+          "functional_type": "principle",
+          "supports": [
+            "necessity_and_minimization"
+          ]
+        },
+        {
+          "ref": "pipl::article_6",
+          "functional_type": "principle",
+          "supports": [
+            "necessity_and_minimization"
+          ]
+        },
+        {
+          "ref": "pipl::article_13",
+          "functional_type": "operative_rule",
+          "supports": [
+            "employee_monitoring_notice_scope"
+          ]
+        },
+        {
+          "ref": "pipl::article_14",
+          "functional_type": "operative_rule",
+          "supports": [
+            "refusal_and_work_system_access"
+          ]
+        },
+        {
+          "ref": "pipl::article_16",
+          "functional_type": "operative_rule",
+          "supports": [
+            "refusal_and_work_system_access"
+          ]
+        },
+        {
+          "ref": "pipl::article_17",
+          "functional_type": "operative_rule",
+          "supports": [
+            "employee_monitoring_notice_scope"
+          ]
+        },
+        {
+          "ref": "pipl::article_51",
+          "functional_type": "operative_rule",
+          "supports": [
+            "security_audit_boundary"
+          ]
+        },
+        {
+          "ref": "anti_unfair_competition_law::article_10",
+          "functional_type": "operative_rule",
+          "supports": [
+            "commercial_secret_protection_balance"
+          ]
+        }
+      ],
+      "contaminating_domains": [
+        "data_security"
+      ],
+      "known_bad_evidence": [
+        {
+          "ref": "cybersecurity_law::article_31",
+          "reason": "Industry cyber-risk cooperation does not ground employee monitoring notice, consent, or minimization."
+        },
+        {
+          "ref": "gb_t_35273_2020::section_10_1",
+          "reason": "Incident response should not become a main basis for routine employee monitoring."
+        }
+      ],
+      "notes": "Trade-secret protection is relevant, but it is a balancing issue rather than a substitute for PIPL notice and minimization rules."
+    },
+    {
+      "case_id": "seed_003_algorithmic_price_discrimination_complex",
+      "scenario_label": "E-commerce algorithmic price discrimination",
+      "expected_domains": [
+        "personal_information_protection",
+        "consumer_rights"
+      ],
+      "primary_issues": [
+        "automated_decision_pricing",
+        "unreasonable_differential_treatment",
+        "transparency_gap",
+        "reject_or_non_profiled_option_missing",
+        "explanation_right"
+      ],
+      "secondary_issues": [
+        "algorithmic_fairness_audit"
+      ],
+      "peripheral_issues": [],
+      "expected_statutes": [
+        {
+          "ref": "pipl::article_7",
+          "functional_type": "principle",
+          "supports": [
+            "transparency_gap"
+          ]
+        },
+        {
+          "ref": "pipl::article_17",
+          "functional_type": "operative_rule",
+          "supports": [
+            "transparency_gap"
+          ]
+        },
+        {
+          "ref": "pipl::article_24",
+          "functional_type": "operative_rule",
+          "supports": [
+            "automated_decision_pricing",
+            "unreasonable_differential_treatment",
+            "reject_or_non_profiled_option_missing"
+          ]
+        },
+        {
+          "ref": "pipl::article_48",
+          "functional_type": "rights_remedy",
+          "supports": [
+            "explanation_right"
+          ]
+        }
+      ],
+      "contaminating_domains": [
+        "corporate_governance"
+      ],
+      "known_bad_evidence": [
+        {
+          "ref": "civil_code::article_610",
+          "reason": "Quality-nonconformity buyer remedy is unrelated to algorithmic price discrimination."
+        }
+      ],
+      "notes": "This seed is mostly healthy when PIPL article 24 and 48 are retrieved; the remaining issue is unrelated evidence leakage into top-3."
+    },
+    {
+      "case_id": "seed_004_online_education_ai_participation_scoring",
+      "scenario_label": "Online education AI participation scoring from camera and expression analysis",
+      "expected_domains": [
+        "personal_information_protection",
+        "education_compliance"
+      ],
+      "primary_issues": [
+        "student_behavior_automated_scoring",
+        "student_video_and_biometric_features",
+        "notice_specificity_gap",
+        "significant_impact_decision",
+        "manual_review_or_explanation_gap"
+      ],
+      "secondary_issues": [
+        "data_retention",
+        "minors_or_student_context"
+      ],
+      "peripheral_issues": [
+        "competition_platform_interference"
+      ],
+      "expected_statutes": [
+        {
+          "ref": "pipl::article_17",
+          "functional_type": "operative_rule",
+          "supports": [
+            "notice_specificity_gap"
+          ]
+        },
+        {
+          "ref": "pipl::article_24",
+          "functional_type": "operative_rule",
+          "supports": [
+            "student_behavior_automated_scoring",
+            "significant_impact_decision",
+            "manual_review_or_explanation_gap"
+          ]
+        },
+        {
+          "ref": "pipl::article_28",
+          "functional_type": "definition",
+          "supports": [
+            "student_video_and_biometric_features"
+          ]
+        },
+        {
+          "ref": "pipl::article_29",
+          "functional_type": "operative_rule",
+          "supports": [
+            "student_video_and_biometric_features"
+          ]
+        },
+        {
+          "ref": "pipl::article_30",
+          "functional_type": "operative_rule",
+          "supports": [
+            "student_video_and_biometric_features",
+            "notice_specificity_gap"
+          ]
+        },
+        {
+          "ref": "pipl::article_48",
+          "functional_type": "rights_remedy",
+          "supports": [
+            "manual_review_or_explanation_gap"
+          ]
+        },
+        {
+          "ref": "pipl::article_55",
+          "functional_type": "operative_rule",
+          "supports": [
+            "significant_impact_decision",
+            "student_video_and_biometric_features"
+          ]
+        },
+        {
+          "ref": "pipl::article_73",
+          "functional_type": "definition",
+          "supports": [
+            "student_behavior_automated_scoring"
+          ]
+        }
+      ],
+      "contaminating_domains": [
+        "competition_law"
+      ],
+      "known_bad_evidence": [
+        {
+          "ref": "anti_unfair_competition_law::article_13",
+          "reason": "Network competition interference is not the core education AI scoring issue."
+        }
+      ],
+      "notes": "The checker should later catch definition-only grounding when PIPL article 73 appears without article 24."
+    },
+    {
+      "case_id": "seed_005_supply_chain_cross_border_data_platform",
+      "scenario_label": "Supplier data platform hosted and maintained overseas",
+      "expected_domains": [
+        "personal_information_protection",
+        "cross_border_data_transfer",
+        "data_security",
+        "trade_secret"
+      ],
+      "primary_issues": [
+        "cross_border_platform_access",
+        "personal_info_in_employee_schedule",
+        "important_or_business_data_classification",
+        "entrusted_processing_or_third_party_access",
+        "contract_responsibility_gap"
+      ],
+      "secondary_issues": [
+        "security_audit",
+        "commercial_confidentiality"
+      ],
+      "peripheral_issues": [
+        "incident_response"
+      ],
+      "expected_statutes": [
+        {
+          "ref": "pipl::article_21",
+          "functional_type": "operative_rule",
+          "supports": [
+            "entrusted_processing_or_third_party_access",
+            "contract_responsibility_gap"
+          ]
+        },
+        {
+          "ref": "pipl::article_23",
+          "functional_type": "operative_rule",
+          "supports": [
+            "entrusted_processing_or_third_party_access"
+          ]
+        },
+        {
+          "ref": "pipl::article_38",
+          "functional_type": "operative_rule",
+          "supports": [
+            "cross_border_platform_access"
+          ]
+        },
+        {
+          "ref": "pipl::article_39",
+          "functional_type": "operative_rule",
+          "supports": [
+            "cross_border_platform_access",
+            "personal_info_in_employee_schedule"
+          ]
+        },
+        {
+          "ref": "pipl::article_51",
+          "functional_type": "operative_rule",
+          "supports": [
+            "contract_responsibility_gap",
+            "security_audit"
+          ]
+        },
+        {
+          "ref": "pipl::article_55",
+          "functional_type": "operative_rule",
+          "supports": [
+            "cross_border_platform_access"
+          ]
+        },
+        {
+          "ref": "data_export_security_assessment_measures::article_4",
+          "functional_type": "procedural",
+          "supports": [
+            "cross_border_platform_access",
+            "important_or_business_data_classification"
+          ]
+        },
+        {
+          "ref": "standard_contract_measures::article_5",
+          "functional_type": "procedural",
+          "supports": [
+            "cross_border_platform_access"
+          ]
+        },
+        {
+          "ref": "data_security_law::important_data_rules",
+          "functional_type": "operative_rule",
+          "supports": [
+            "important_or_business_data_classification"
+          ]
+        }
+      ],
+      "contaminating_domains": [
+        "corporate_governance"
+      ],
+      "known_bad_evidence": [
+        {
+          "ref": "gb_t_35273_2020::section_11_7",
+          "reason": "Security audit may be secondary, but it cannot replace cross-border transfer operative rules."
+        }
+      ],
+      "notes": "This seed tests whether the system can separate personal information, business data, important data, entrusted processing, and overseas access."
+    },
+    {
+      "case_id": "seed_006_fintech_cross_border_antifraud_scoring",
+      "scenario_label": "Fintech cross-border anti-fraud model and automated credit denial",
+      "expected_domains": [
+        "personal_information_protection",
+        "cross_border_data_transfer",
+        "financial_regulation"
+      ],
+      "primary_issues": [
+        "cross_border_sensitive_personal_info",
+        "financial_antifraud_model_training",
+        "automated_decision_credit_denial",
+        "transparency_and_explanation_gap",
+        "manual_review_channel_missing",
+        "cross_border_notice_gap",
+        "separate_consent_required"
+      ],
+      "secondary_issues": [
+        "purpose_change",
+        "model_training_data_minimization"
+      ],
+      "peripheral_issues": [
+        "corporate_group_governance"
+      ],
+      "expected_statutes": [
+        {
+          "ref": "pipl::article_17",
+          "functional_type": "operative_rule",
+          "supports": [
+            "transparency_and_explanation_gap",
+            "cross_border_notice_gap"
+          ]
+        },
+        {
+          "ref": "pipl::article_24",
+          "functional_type": "operative_rule",
+          "supports": [
+            "automated_decision_credit_denial",
+            "manual_review_channel_missing"
+          ]
+        },
+        {
+          "ref": "pipl::article_28",
+          "functional_type": "definition",
+          "supports": [
+            "cross_border_sensitive_personal_info"
+          ]
+        },
+        {
+          "ref": "pipl::article_29",
+          "functional_type": "operative_rule",
+          "supports": [
+            "cross_border_sensitive_personal_info",
+            "separate_consent_required"
+          ]
+        },
+        {
+          "ref": "pipl::article_30",
+          "functional_type": "operative_rule",
+          "supports": [
+            "cross_border_sensitive_personal_info",
+            "cross_border_notice_gap"
+          ]
+        },
+        {
+          "ref": "pipl::article_38",
+          "functional_type": "operative_rule",
+          "supports": [
+            "cross_border_sensitive_personal_info"
+          ]
+        },
+        {
+          "ref": "pipl::article_39",
+          "functional_type": "operative_rule",
+          "supports": [
+            "cross_border_notice_gap",
+            "separate_consent_required"
+          ]
+        },
+        {
+          "ref": "pipl::article_48",
+          "functional_type": "rights_remedy",
+          "supports": [
+            "transparency_and_explanation_gap",
+            "manual_review_channel_missing"
+          ]
+        },
+        {
+          "ref": "pipl::article_55",
+          "functional_type": "operative_rule",
+          "supports": [
+            "cross_border_sensitive_personal_info",
+            "automated_decision_credit_denial"
+          ]
+        },
+        {
+          "ref": "pipl::article_56",
+          "functional_type": "procedural",
+          "supports": [
+            "cross_border_sensitive_personal_info"
+          ]
+        },
+        {
+          "ref": "standard_contract_measures::article_5",
+          "functional_type": "procedural",
+          "supports": [
+            "cross_border_sensitive_personal_info"
+          ]
+        }
+      ],
+      "contaminating_domains": [
+        "corporate_governance"
+      ],
+      "known_bad_evidence": [
+        {
+          "ref": "company_law::article_189",
+          "reason": "Shareholder derivative-action rule is unrelated to cross-border fintech scoring."
+        },
+        {
+          "ref": "company_law::article_57",
+          "reason": "Shareholder inspection rights are unrelated to cross-border fintech scoring."
+        }
+      ],
+      "notes": "This is the strongest current example of good reasoning with polluted evidence."
+    },
+    {
+      "case_id": "seed_007_cross_border_ecommerce_after_sales_scoring",
+      "scenario_label": "Cross-border e-commerce after-sales risk scoring and automated refund denial",
+      "expected_domains": [
+        "personal_information_protection",
+        "cross_border_data_transfer",
+        "consumer_rights"
+      ],
+      "primary_issues": [
+        "after_sales_automated_decision",
+        "consumer_refund_rights_impacted",
+        "cross_border_model_access",
+        "notice_specificity_gap",
+        "manual_review_missing",
+        "sensitive_or_high_risk_data_mix"
+      ],
+      "secondary_issues": [
+        "data_retention",
+        "device_fingerprint",
+        "model_fairness_review"
+      ],
+      "peripheral_issues": [
+        "incident_response"
+      ],
+      "expected_statutes": [
+        {
+          "ref": "pipl::article_17",
+          "functional_type": "operative_rule",
+          "supports": [
+            "notice_specificity_gap"
+          ]
+        },
+        {
+          "ref": "pipl::article_24",
+          "functional_type": "operative_rule",
+          "supports": [
+            "after_sales_automated_decision",
+            "manual_review_missing"
+          ]
+        },
+        {
+          "ref": "pipl::article_28",
+          "functional_type": "definition",
+          "supports": [
+            "sensitive_or_high_risk_data_mix"
+          ]
+        },
+        {
+          "ref": "pipl::article_29",
+          "functional_type": "operative_rule",
+          "supports": [
+            "sensitive_or_high_risk_data_mix"
+          ]
+        },
+        {
+          "ref": "pipl::article_30",
+          "functional_type": "operative_rule",
+          "supports": [
+            "sensitive_or_high_risk_data_mix",
+            "notice_specificity_gap"
+          ]
+        },
+        {
+          "ref": "pipl::article_38",
+          "functional_type": "operative_rule",
+          "supports": [
+            "cross_border_model_access"
+          ]
+        },
+        {
+          "ref": "pipl::article_39",
+          "functional_type": "operative_rule",
+          "supports": [
+            "cross_border_model_access",
+            "notice_specificity_gap"
+          ]
+        },
+        {
+          "ref": "pipl::article_48",
+          "functional_type": "rights_remedy",
+          "supports": [
+            "manual_review_missing"
+          ]
+        },
+        {
+          "ref": "pipl::article_55",
+          "functional_type": "operative_rule",
+          "supports": [
+            "after_sales_automated_decision",
+            "cross_border_model_access"
+          ]
+        },
+        {
+          "ref": "data_export_security_assessment_measures::article_4",
+          "functional_type": "procedural",
+          "supports": [
+            "cross_border_model_access"
+          ]
+        },
+        {
+          "ref": "standard_contract_measures::article_5",
+          "functional_type": "procedural",
+          "supports": [
+            "cross_border_model_access"
+          ]
+        },
+        {
+          "ref": "consumer_rights_protection_law::refund_and_fair_trade_rules",
+          "functional_type": "operative_rule",
+          "supports": [
+            "consumer_refund_rights_impacted"
+          ]
+        }
+      ],
+      "contaminating_domains": [
+        "data_security",
+        "corporate_governance"
+      ],
+      "known_bad_evidence": [
+        {
+          "ref": "gb_t_35273_2020::section_10_1",
+          "reason": "Personal information incident response is peripheral and should not outrank automated-decision and consumer-rights rules."
+        }
+      ],
+      "notes": "This seed should force coverage across cross-border transfer, automated decision, sensitive or high-risk data, and consumer remedies."
+    }
+  ]
+}

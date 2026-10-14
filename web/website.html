@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企业全生命周期风控平台</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="./styles.css?v=riskflow-ux-20260903-1">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="sidebar-brand">
+                <div class="sidebar-title">RiskFlow</div>
+                <div class="sidebar-subtitle">Enterprise Control</div>
+            </div>
+            <button class="sidebar-toggle" id="sidebar-toggle" type="button" aria-label="收起侧边栏">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="主导航">
+            <div class="sidebar-section-title">总览</div>
+            <button class="nav-item active" type="button" data-tab="dashboard">
+                <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>首页驾驶舱</span>
+            </button>
+            <button class="nav-item" type="button" data-tab="lifecycle">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M4 12h4l3-7 4 14 3-7h2"/></svg>
+                <span>生命周期风控</span>
+                <span class="nav-badge">6</span>
+            </button>
+
+            <div class="sidebar-section-title">内部风控</div>
+            <button class="nav-item" type="button" data-tab="internal">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                <span>内部风控</span>
+                <span class="nav-badge" id="internal-risk-nav-badge">-</span>
+            </button>
+
+            <div class="sidebar-section-title">外部风险</div>
+            <button class="nav-item" type="button" data-tab="market">
+                <svg class="nav-icon" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                <span>市场行情</span>
+            </button>
+            <button class="nav-item" type="button" data-tab="supply">
+                <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 11 8 12 1-1 8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
+                <span>供应链地图</span>
+            </button>
+
+            <div class="sidebar-section-title">专业分析</div>
+            <button class="nav-item" type="button" data-tab="legal">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span>法律风控</span>
+                <span class="nav-badge">3</span>
+            </button>
+            <button class="nav-item" type="button" data-tab="skills">
+                <svg class="nav-icon" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="9" y="14" width="6" height="6" rx="1"/><path d="M10 7h4M12 10v4"/></svg>
+                <span>我的技能</span>
+            </button>
+
+            <div class="sidebar-section-title">系统</div>
+            <button class="nav-item" type="button" data-tab="settings">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M4 7h10"/><path d="M18 7h2"/><circle cx="16" cy="7" r="2"/><path d="M4 17h3"/><path d="M11 17h9"/><circle cx="9" cy="17" r="2"/></svg>
+                <span>系统配置</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="sidebar-avatar">LC</div>
+            <div>
+                <div class="sidebar-footer-name">风控项目组</div>
+                <div class="sidebar-footer-role">数据范围待核验</div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div class="breadcrumb">
+                <span>RiskFlow</span>
+                <span>/</span>
+                <span class="breadcrumb-current" id="breadcrumb-current">首页驾驶舱</span>
+            </div>
+            <div class="topbar-actions">
+                <label class="search-box">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                    <input id="global-search-input" type="search" placeholder="搜索企业、合同、风险、法规或证券代码">
+                </label>
+                <button class="icon-button" type="button" aria-label="通知">
+                    <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <section id="view-dashboard" class="view active">
+            <div class="page-header">
+                <div>
+                    <h1>全生命周期风险驾驶舱</h1>
+                    <p>从市场、供应链、法律文件到企业运营节点，汇总今日需要关注的风险。</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn" type="button">导出简报</button>
+                    <button class="btn btn-primary" type="button">新建评估</button>
+                </div>
+            </div>
+            <div class="page-body">
+                <div class="score-panel">
+                    <div class="score-main">
+                        <span class="metric-label">综合风险状态</span>
+                        <div class="score-value"><span class="score-status">等待数据</span></div>
+                        <div class="score-trend"><span class="risk-dot med"></span>等待企业范围、内部管理信息和外部风险线索；没有足够资料时不显示风险分数。</div>
+                    </div>
+                    <div class="score-dimensions">
+                        <div class="dimension-card"><span>高风险事项</span><strong>—</strong><div class="metric-unit">等待风险清单</div></div>
+                        <div class="dimension-card"><span>待处理决策点</span><strong>—</strong><div class="metric-unit">等待决策状态</div></div>
+                        <div class="dimension-card"><span>待办整改</span><strong>—</strong><div class="metric-unit">等待责任任务</div></div>
+                        <div class="dimension-card"><span>外部待核实</span><strong>—</strong><div class="metric-unit">不计入企业风险</div></div>
+                    </div>
+                </div>
+
+                <section class="internal-dashboard-strip" id="internal-dashboard-strip" aria-live="polite">
+                    <div class="internal-strip-head">
+                        <div><span class="metric-label">内部风险处理</span><h2>正在读取阶段条件和整改任务</h2></div>
+                        <button class="btn" type="button" id="dashboard-internal-open">查看内部风控</button>
+                    </div>
+                    <div class="internal-strip-metrics" id="internal-dashboard-metrics"></div>
+                </section>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-left">
+                        <div class="section-heading">
+                            <h2>重点预警</h2>
+                            <span>等待同步</span>
+                        </div>
+                        <div class="alert-list">
+                            <div class="empty-state">等待风险清单、决策状态和外部风险线索。</div>
+                        </div>
+                    </div>
+                    <aside class="dashboard-right">
+                        <div class="section-heading">
+                            <h2>待办事项</h2>
+                            <span>等待同步</span>
+                        </div>
+                        <div class="task-list">
+                            <div class="empty-state">等待整改任务。</div>
+                        </div>
+                        <div class="section-heading section-spaced">
+                            <h2>数据来源与覆盖</h2>
+                            <span id="dashboard-source-summary">待读取</span>
+                        </div>
+                        <div class="status-list" id="dashboard-source-list">
+                            <div class="empty-state">等待来源与覆盖范围信息。</div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-lifecycle" class="view">
+            <div class="page-header">
+                <div>
+                    <h1>企业生命周期风控</h1>
+                    <p>按当前阶段、风险事项和处置进度查看企业风险。</p>
+                </div>
+            </div>
+            <div class="page-body">
+                <section class="lifecycle-overview" id="lifecycle-overview" aria-live="polite"></section>
+                <section class="lifecycle-context" id="lifecycle-context" aria-live="polite"></section>
+                <div class="flowchart" id="flowchart"></div>
+                <div class="lc-detail" id="lc-detail"></div>
+            </div>
+        </section>
+
+        <section id="view-internal" class="view">
+            <div class="page-header">
+                <div>
+                    <h1>内部风控</h1>
+                    <p>围绕项目关键节点，记录风险事项、材料核验、整改任务和人工复核，方便追溯每一步。</p>
+                </div>
+                <div class="header-actions">
+                    <span class="data-mode-badge" id="internal-risk-source-status">连接中</span>
+                    <button class="btn btn-primary" id="internal-risk-event-create" type="button">添加</button>
+                    <button class="btn" id="management-assistance-refresh" type="button">生成处理建议</button>
+                    <button class="btn" id="internal-risk-refresh" type="button">刷新</button>
+                </div>
+            </div>
+            <div class="page-body internal-control-page">
+                <section class="internal-control-summary" id="internal-control-summary" aria-live="polite"></section>
+                <section class="internal-workbench-toolbar" aria-label="内部风控筛选工具">
+                    <div>
+                        <span class="metric-label">待办工作台</span>
+                        <strong id="internal-workbench-title">按顺序处理事项</strong>
+                    </div>
+                    <div class="internal-filter-group">
+                        <label>风险等级
+                            <select id="internal-risk-level-filter" aria-label="按风险等级筛选">
+                                <option value="all">全部等级</option>
+                                <option value="high">高风险及以上</option>
+                                <option value="open">仅待处置</option>
+                            </select>
+                        </label>
+                        <label>项目阶段
+                            <select id="internal-stage-filter" aria-label="按项目阶段筛选">
+                                <option value="all">全部阶段</option>
+                                <option value="establishment">设立与治理</option>
+                                <option value="research_and_development">研发与验证</option>
+                                <option value="market_access">市场准入与客户导入</option>
+                                <option value="commercialization">商业化与质量交付</option>
+                                <option value="financing">融资与税务治理</option>
+                                <option value="scale_expansion">规模扩张与市场竞争</option>
+                                <option value="strategic_adjustment">退出/战略调整与供应链韧性</option>
+                            </select>
+                        </label>
+                    </div>
+                </section>
+                <section class="internal-flow-shell" aria-label="内部风控处理流程">
+                    <nav class="internal-process-rail" id="internal-process-rail" aria-label="处理阶段"></nav>
+                    <div class="internal-inbox-layout">
+                        <aside class="internal-stage-nav" id="internal-stage-nav" aria-label="待办阶段"></aside>
+                        <section class="internal-work-list-panel" aria-label="待办事项">
+                            <header class="internal-list-header">
+                                <div><span class="metric-label" id="internal-list-kicker">当前阶段</span><h2 id="internal-list-title">待办事项</h2></div>
+                                <span class="internal-list-count" id="internal-list-count">0 项</span>
+                            </header>
+                            <div class="internal-work-list" id="internal-work-list" aria-live="polite"></div>
+                        </section>
+                        <aside class="internal-work-detail" id="internal-work-detail" aria-live="polite">
+                            <div class="internal-detail-empty" id="internal-detail-empty">
+                                <strong>选择一项开始处理</strong>
+                                <p>按左侧顺序查看待办，完成当前操作后再处理下一项。</p>
+                            </div>
+                            <section class="internal-event-drawer" id="internal-event-drawer" hidden></section>
+                            <section class="internal-task-drawer" id="internal-task-drawer" hidden></section>
+                            <section class="internal-gate-detail" id="internal-gate-detail" hidden></section>
+                            <section class="internal-review-drawer" id="internal-review-drawer" hidden></section>
+                        </aside>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+                <section id="view-market" class="view">
+            <div class="page-header">
+                <div>
+                    <h1>市场行情与外部风险</h1>
+                    <p>把指数、板块、商品期货和美股信号接入风险判断，联动供应链、融资、销售和合规影响。</p>
+                </div>
+            </div>
+            <div class="page-body">
+                <section class="external-risk-panel" id="external-risk-panel" aria-live="polite">
+                    <div class="external-risk-head">
+                        <div>
+                            <div class="metric-label">外部风险数据流</div>
+                            <h2 id="external-risk-headline">正在接收市场与供应链信号</h2>
+                        </div>
+                        <div class="external-risk-actions">
+                            <span class="data-mode-badge" id="external-risk-mode">连接中</span>
+                            <button class="btn" type="button" id="external-risk-refresh">刷新</button>
+                        </div>
+                    </div>
+                    <div class="external-risk-summary" id="external-risk-summary"></div>
+                    <div class="external-risk-content">
+                        <div class="external-risk-main">
+                            <div class="section-heading"><h2>风险信号</h2><span id="external-risk-signal-count">0</span></div>
+                            <div class="external-signal-list" id="external-risk-signals"></div>
+                            <div class="section-heading section-spaced"><h2>泛产业链观察</h2><span id="external-risk-observation-count">0</span></div>
+                            <div class="external-observation-list" id="external-risk-observations"></div>
+                            <div class="section-heading section-spaced"><h2>产业链传导</h2><span id="external-risk-chain-count">0</span></div>
+                            <div class="external-chain-alert-list" id="external-risk-chain-alerts"></div>
+                        </div>
+                        <aside class="external-risk-side">
+                            <div class="section-heading"><h2>法律检索队列</h2><span id="external-risk-task-count">0</span></div>
+                            <div class="external-task-list" id="external-risk-tasks"></div>
+                            <div class="section-heading section-spaced"><h2>数据源</h2><span id="external-risk-provider-count">0</span></div>
+                            <div class="external-provider-list" id="external-risk-providers"></div>
+                        </aside>
+                    </div>
+                </section>
+
+                <div class="market-grid">
+                    <article class="market-card wide">
+                        <div class="section-heading quote-heading">
+                            <div>
+                                <h2 id="quote-chart-title">上证指数</h2>
+                                <span id="quote-chart-meta">分时</span>
+                            </div>
+                            <div class="segmented" id="quote-interval-tabs">
+                                <button class="active" type="button" data-interval="intraday">分时</button>
+                                <button type="button" data-interval="daily">日K</button>
+                                <button type="button" data-interval="weekly">周K</button>
+                                <button type="button" data-interval="monthly">月K</button>
+                            </div>
+                        </div>
+                        <label class="quote-select-row">
+                            <span>品类</span>
+                            <select id="quote-symbol-select" aria-label="选择行情品类">
+                                <optgroup label="指数">
+                                    <option value="sh000001" selected>上证指数</option>
+                                    <option value="sz399001">深证成指</option>
+                                    <option value="sz399006">创业板指</option>
+                                    <option value="us_NDX">纳斯达克100</option>
+                                    <option value="us_SPX">标普500</option>
+                                </optgroup>
+                                <optgroup label="美股">
+                                    <option value="us_AAPL">苹果</option>
+                                    <option value="us_NVDA">英伟达</option>
+                                    <option value="us_TSLA">特斯拉</option>
+                                    <option value="us_MSFT">微软</option>
+                                    <option value="us_BABA">阿里巴巴</option>
+                                </optgroup>
+                                <optgroup label="板块">
+                                    <option value="bk_BK1326">半导体设备</option>
+                                    <option value="bk_BK1128">CPO概念</option>
+                                    <option value="bk_BK1037">消费电子</option>
+                                    <option value="bk_BK0877">PCB</option>
+                                    <option value="bk_BK1178">AI眼镜</option>
+                                    <option value="bk_BK1164">AIPC</option>
+                                    <option value="bk_BK1162">AI手机</option>
+                                    <option value="bk_BK0457">电网设备</option>
+                                    <option value="bk_BK1590">通信设备</option>
+                                    <option value="bk_BK1203">非银金融</option>
+                                    <option value="bond_000012">国债指数</option>
+                                </optgroup>
+                                <optgroup label="商品与期货">
+                                    <option value="hf_CAD">伦铜（LME）</option>
+                                    <option value="hf_AHD">伦铝（LME）</option>
+                                    <option value="hf_SI">纽约白银（COMEX）</option>
+                                    <option value="hf_GC">纽约黄金（COMEX）</option>
+                                    <option value="hf_XPD">钯金（NYMEX）</option>
+                                    <option value="hf_XPT">铂金（NYMEX）</option>
+                                    <option value="hf_CL">原油（NYMEX）</option>
+                                    <option value="hf_NG">天然气（NYMEX）</option>
+                                    <option value="hf_ZSD">伦锌（LME）</option>
+                                    <option value="hf_NID">伦镍（LME）</option>
+                                    <option value="hf_PBD">伦铅（LME）</option>
+                                    <option value="hf_SND">伦锡（LME）</option>
+                                    <option value="hf_C">CBOT玉米（CBOT）</option>
+                                    <option value="hf_S">CBOT大豆（CBOT）</option>
+                                    <option value="hf_W">CBOT小麦（CBOT）</option>
+                                    <option value="if_EC0">欧线集运主连（上期能源）</option>
+                                    <option value="if_SC0">原油主连（上期能源）</option>
+                                    <option value="if_SI0">工业硅主连（广期所）</option>
+                                    <option value="if_SA0">纯碱主连（郑商所）</option>
+                                    <option value="if_EG0">乙二醇主连（大商所）</option>
+                                    <option value="if_PP0">聚丙烯主连（大商所）</option>
+                                    <option value="if_L0">聚乙烯主连（大商所）</option>
+                                    <option value="if_V0">PVC主连（大商所）</option>
+                                    <option value="if_MA0">甲醇主连（郑商所）</option>
+                                    <option value="if_TA0">PTA主连（郑商所）</option>
+                                    <option value="if_SH0">烧碱主连（上期所）</option>
+                                    <option value="if_FG0">玻璃主连（郑商所）</option>
+                                    <option value="if_UR0">尿素主连（郑商所）</option>
+                                    <option value="if_EB0">苯乙烯主连（大商所）</option>
+                                    <option value="if_PX0">对二甲苯主连（郑商所）</option>
+                                    <option value="if_PF0">短纤主连（郑商所）</option>
+                                    <option value="if_PG0">液化石油气主连（大商所）</option>
+                                </optgroup>
+                                <optgroup label="国内有色与黑色期货">
+                                    <option value="if_AU0">沪金主连（上期所）</option>
+                                    <option value="if_AG0">沪银主连（上期所）</option>
+                                    <option value="if_CU0">沪铜主连（上期所）</option>
+                                    <option value="if_AL0">沪铝主连（上期所）</option>
+                                    <option value="if_ZN0">沪锌主连（上期所）</option>
+                                    <option value="if_NI0">沪镍主连（上期所）</option>
+                                    <option value="if_SN0">沪锡主连（上期所）</option>
+                                    <option value="if_RB0">螺纹钢主连（上期所）</option>
+                                    <option value="if_HC0">热卷主连（上期所）</option>
+                                    <option value="if_I0">铁矿石主连（大商所）</option>
+                                    <option value="if_J0">焦炭主连（大商所）</option>
+                                    <option value="if_JM0">焦煤主连（大商所）</option>
+                                </optgroup>
+                                <optgroup label="国内能源、化工与农产品期货">
+                                    <option value="if_BU0">沥青主连（上期所）</option>
+                                    <option value="if_FU0">燃料油主连（上期所）</option>
+                                    <option value="if_LU0">低硫燃料油主连（上期能源）</option>
+                                    <option value="if_RU0">橡胶主连（上期所）</option>
+                                    <option value="if_SP0">纸浆主连（上期所）</option>
+                                    <option value="if_P0">棕榈油主连（大商所）</option>
+                                    <option value="if_Y0">豆油主连（大商所）</option>
+                                    <option value="if_M0">豆粕主连（大商所）</option>
+                                    <option value="if_A0">豆一主连（大商所）</option>
+                                    <option value="if_RM0">菜粕主连（郑商所）</option>
+                                    <option value="if_OI0">菜油主连（郑商所）</option>
+                                    <option value="if_SR0">白糖主连（郑商所）</option>
+                                    <option value="if_CF0">棉花主连（郑商所）</option>
+                                    <option value="if_LH0">生猪主连（大商所）</option>
+                                    <option value="if_JD0">鸡蛋主连（大商所）</option>
+                                </optgroup>
+                                <optgroup label="金融期货">
+                                    <option value="if_IF0">沪深300主连（中金所）</option>
+                                    <option value="if_IH0">上证50主连（中金所）</option>
+                                    <option value="if_IC0">中证500主连（中金所）</option>
+                                    <option value="if_IM0">中证1000主连（中金所）</option>
+                                    <option value="if_T0">十年期国债主连（中金所）</option>
+                                    <option value="if_TF0">五年期国债主连（中金所）</option>
+                                    <option value="if_TS0">二年期国债主连（中金所）</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <label class="quote-search-row">
+                            <span>代码/名称</span>
+                            <input id="quote-symbol-search" type="search" placeholder="输入 600519 / sh688981 / NVDA / hk00700" aria-label="输入股票代码或名称查询行情">
+                            <button class="btn" type="button" id="quote-symbol-search-button">查询</button>
+                        </label>
+                        <div class="line-chart quote-chart" id="quote-chart" aria-label="行情图表">
+                            <svg viewBox="0 0 760 220" preserveAspectRatio="none"></svg>
+                        </div>
+                    </article>
+                </div>
+
+                <section class="workflow-panel">
+                    <div class="workflow-head">
+                        <div>
+                            <h2>科创上下游价格工作流</h2>
+                            <span>选择资源、材料、设备、应用和终端卡片，在画布上拖拽并连线，查看各节点实时行情；滚轮缩放，拖拽空白处平移。</span>
+                        </div>
+                        <div class="workflow-toolbar" aria-label="产业链工作流工具栏">
+                            <label><span>分类</span><select id="workflow-category-select" aria-label="选择节点分类"></select></label>
+                            <label><span>卡片</span><select id="workflow-node-select" aria-label="选择节点卡片"></select></label>
+                            <button class="btn" type="button" id="workflow-add-node">添加卡片</button>
+                            <label class="workflow-symbol-import"><span>代码</span><input id="workflow-symbol-input" type="text" placeholder="如 600519 / NVDA" aria-label="输入股票代码导入卡片"></label>
+                            <button class="btn" type="button" id="workflow-import-symbol">导入代码</button>
+                            <button class="btn" type="button" id="workflow-connect-mode">连线</button>
+                            <button class="btn" type="button" id="workflow-save">保存</button>
+                            <button class="btn" type="button" id="workflow-reset">恢复默认</button>
+                            <span class="workflow-save-status" id="workflow-save-status">项目文件同步中</span>
+                            <button class="btn" type="button" id="workflow-open-supply-map" hidden>维护供应链节点</button>
+                            <button class="btn" type="button" id="workflow-reload-current" hidden>载入最新版本</button>
+                            <button class="btn" type="button" id="workflow-merge-draft" hidden>受控合并草稿</button>
+                        </div>
+                    </div>
+                    <div class="workflow-shell">
+                        <div class="workflow-canvas" id="workflow-canvas" aria-label="科创产业链工作流画布">
+                            <div class="workflow-stage" id="workflow-stage">
+                                <svg class="workflow-links" id="workflow-links"></svg>
+                                <div class="workflow-nodes" id="workflow-nodes"></div>
+                            </div>
+                            <div class="workflow-viewport-controls" aria-label="画布视图控制">
+                                <button class="btn workflow-viewport-button" type="button" id="workflow-fit-view" title="将全部节点适配到当前视窗">适配</button>
+                                <button class="btn workflow-viewport-button" type="button" id="workflow-reset-view" title="恢复为 100% 缩放">100%</button>
+                            </div>
+                        </div>
+                        <aside class="workflow-inspector" id="workflow-inspector" aria-label="节点详情"></aside>
+                    </div>
+                </section>
+
+                <table class="data-table market-events-table">
+                    <thead><tr><th>事件</th><th>方向</th><th>影响环节</th><th>风险等级</th><th>建议动作</th></tr></thead>
+                    <tbody>
+                        <tr><td colspan="5" class="market-empty-row">正在等待可复核的实时市场与产业链信号</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+<section id="view-supply" class="view">
+            <div class="page-header">
+                <div>
+                    <h1>供应链风险地图</h1>
+                    <p>以浅色地图呈现供应商分布、区域集中度和跨境风险。</p>
+                </div>
+                <div class="supply-debug-controls" id="supply-debug-controls" hidden>
+                    <label for="supply-debug-scenario">开发者调试</label>
+                    <select id="supply-debug-scenario" disabled aria-label="开发者调试场景">
+                        <option value="">正在检查调试模式</option>
+                    </select>
+                    <button class="btn" id="supply-debug-load" type="button" disabled>加载场景</button>
+                    <span class="supply-debug-status" id="supply-debug-status" aria-live="polite"></span>
+                </div>
+                <div class="supply-summary">
+                    <span><strong id="supply-supplier-count">0</strong> 供应商</span>
+                    <span><strong id="supply-location-count">0</strong> 已覆盖地区</span>
+                    <span><strong class="orange" id="supply-high-risk-count">0</strong> 高风险</span>
+                </div>
+            </div>
+            <div class="map-layout">
+                <aside class="map-sidebar-left">
+                    <div class="supply-side-head">
+                        <h2>供应网络</h2>
+                        <button class="supply-add-button" id="supply-add-button" type="button" title="添加供应商" aria-label="添加供应商">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                        </button>
+                    </div>
+                    <div class="segmented supply-map-mode" id="supply-map-mode" aria-label="地图范围">
+                        <button class="active" type="button" data-map-mode="china">中国</button>
+                        <button type="button" data-map-mode="world">世界</button>
+                    </div>
+                    <p class="supply-source-status" id="supply-source-status">正在读取供应链记录</p>
+                    <div class="region-list" id="supply-region-list"></div>
+                    <div class="legend"><span><i class="risk-dot low"></i>低</span><span><i class="risk-dot med"></i>中</span><span><i class="risk-dot high"></i>高</span><span><i class="risk-dot crit"></i>严重</span></div>
+                </aside>
+                <div class="map-center">
+                    <div class="map-svg-wrap">
+                        <svg class="map-svg" id="china-map" viewBox="0 0 1000 780" xmlns="http://www.w3.org/2000/svg" aria-label="中国省级供应链风险地图"></svg>
+                    </div>
+                    <div class="map-zoom-controls" aria-label="地图缩放">
+                        <button class="map-zoom-btn" type="button" id="map-zoom-in" aria-label="放大地图">+</button>
+                        <button class="map-zoom-btn" type="button" id="map-zoom-out" aria-label="缩小地图">−</button>
+                        <button class="map-zoom-btn map-zoom-reset" type="button" id="map-zoom-reset" aria-label="重置地图">1:1</button>
+                    </div>
+                    <div class="map-tooltip" id="map-tooltip"></div>
+                    <div class="context-menu" id="supplier-context-menu" role="menu" aria-hidden="true">
+                        <button type="button" data-action="add">添加供应商</button>
+                        <button type="button" data-action="edit">编辑供应商</button>
+                        <button type="button" data-action="delete">删除供应商</button>
+                    </div>
+                </div>
+                <aside class="map-sidebar-right" id="detail-panel"></aside>
+            </div>
+        </section>
+
+        <section id="view-settings" class="view">
+            <div class="page-header">
+                <div>
+                    <h1>系统配置</h1>
+                    <p>管理模型、检索、外部情报和服务连接。密钥只可写入，不会在页面中回显。</p>
+                </div>
+                <div class="header-actions">
+                    <span class="data-mode-badge" id="settings-source-status">连接后端以读取配置</span>
+                    <button class="btn" id="settings-test-connection" type="button">测试连接</button>
+                    <button class="btn" id="settings-refresh-rss" type="button">立即刷新 RSS</button>
+                    <button class="btn btn-primary" id="settings-save" type="submit" form="runtime-settings-form">保存配置</button>
+                </div>
+            </div>
+            <div class="page-body settings-page">
+                <form id="runtime-settings-form" class="settings-form">
+                    <section class="settings-section">
+                        <div class="settings-section-head">
+                            <div><span class="metric-label">服务连接</span><h2>本机后端</h2></div>
+                            <p>此地址仅保存在当前浏览器，用于连接 RiskFlow 后端。</p>
+                        </div>
+                        <div class="settings-grid settings-grid-single">
+                            <label><span>后端地址</span><input id="settings-backend-url" type="url" inputmode="url" placeholder="http://127.0.0.1:8000"></label>
+                        </div>
+                    </section>
+
+                    <section class="settings-section">
+                        <div class="settings-section-head">
+                            <div><span class="metric-label">模型与检索</span><h2>推理、向量和存储</h2></div>
+                            <p>已有密钥以状态标记显示；留空表示不修改已有密钥。</p>
+                        </div>
+                        <div class="llm-config" id="settings-llm-config">
+                            <div class="llm-config-header">
+                                <label class="llm-channel-control"><span>服务渠道</span><select id="settings-llm-preset"><optgroup label="OpenAI 兼容"><option value="openai">OpenAI</option><option value="deepseek">DeepSeek</option><option value="qwen">通义千问</option><option value="zhipu">智谱 GLM</option><option value="kimi">Kimi</option><option value="siliconflow">硅基流动</option><option value="openrouter">OpenRouter</option><option value="ollama">Ollama</option></optgroup><optgroup label="原生协议"><option value="anthropic">Anthropic</option><option value="gemini">Google Gemini</option></optgroup><option value="custom">自定义 / 企业网关</option></select></label>
+                                <label class="llm-protocol-control" id="settings-llm-protocol-control" hidden><span>接口协议</span><select id="settings-llm-provider"><option value="openai_compatible">OpenAI 兼容</option><option value="anthropic_messages">Anthropic Messages</option><option value="gemini_generate_content">Google Gemini</option></select></label>
+                            </div>
+                            <div class="llm-config-fields">
+                                <label class="llm-address-field"><span>LLM 服务地址</span><input id="settings-llm-base-url" type="url"></label>
+                                <label><span>对话模型</span><input id="settings-llm-model" maxlength="160"></label>
+                                <label><span>LLM API Key <small id="settings-llm-key-status"></small></span><input id="settings-llm-api-key" type="password" autocomplete="new-password" placeholder="输入新密钥以替换"></label>
+                            </div>
+                        </div>
+                        <div class="llm-config" id="settings-vision-llm-config">
+                            <div class="llm-config-header">
+                                <label class="settings-toggle"><input id="settings-vision-llm-enabled" type="checkbox"><span></span><b>启用图片材料识别</b></label>
+                                <p>仅提取图片可见事实，不作为法律依据；留空密钥时沿用对话模型配置。</p>
+                            </div>
+                            <div class="llm-config-fields">
+                                <label class="llm-address-field"><span>视觉模型服务地址</span><input id="settings-vision-llm-base-url" type="url" placeholder="留空则沿用 LLM 服务地址"></label>
+                                <label><span>视觉模型</span><input id="settings-vision-llm-model" maxlength="160" placeholder="deepseek-v4-flash-vision-exp"></label>
+                                <label><span>视觉 API Key <small id="settings-vision-llm-key-status"></small></span><input id="settings-vision-llm-api-key" type="password" autocomplete="new-password" placeholder="留空则沿用 LLM API Key"></label>
+                            </div>
+                        </div>
+                        <div class="settings-grid settings-storage-grid">
+                            <label><span>向量服务地址</span><input id="settings-siliconflow-base-url" type="url"></label>
+                            <label><span>嵌入模型</span><input id="settings-embedding-model" maxlength="200"></label>
+                            <label><span>向量 API Key <small id="settings-siliconflow-key-status"></small></span><input id="settings-siliconflow-api-key" type="password" autocomplete="new-password" placeholder="输入新密钥以替换"></label>
+                            <label><span>Qdrant 主机</span><input id="settings-qdrant-host" maxlength="240"></label>
+                            <label><span>Qdrant 端口</span><input id="settings-qdrant-port" type="number" min="1" max="65535"></label>
+                        </div>
+                    </section>
+
+                    <section class="settings-section">
+                        <div class="settings-section-head">
+                            <div><span class="metric-label">外部市场与情报</span><h2>数据获取策略</h2></div>
+                            <p>变更情报调度开关后，重启后端即可启用新的后台轮询状态。</p>
+                        </div>
+                        <div class="settings-toggle-grid">
+                            <label class="settings-toggle"><input id="settings-live-enabled" type="checkbox"><span></span><b>启用实时外部数据</b></label>
+                            <label class="settings-toggle"><input id="settings-http-enabled" type="checkbox"><span></span><b>启用 HTTP 行情源</b></label>
+                            <label class="settings-toggle"><input id="settings-akshare-enabled" type="checkbox"><span></span><b>启用 AkShare</b></label>
+                            <label class="settings-toggle"><input id="settings-intelligence-enabled" type="checkbox"><span></span><b>启用 RSS 与政策情报</b></label>
+                            <label class="settings-toggle"><input id="settings-intelligence-scheduler-enabled" type="checkbox"><span></span><b>后台定时同步</b></label>
+                        </div>
+                        <div class="settings-grid settings-grid-compact">
+                            <label><span>HTTP 超时（秒）</span><input id="settings-http-timeout" type="number" min="1" max="60" step="0.5"></label>
+                            <label><span>RSS 轮询间隔（秒）</span><input id="settings-intelligence-poll-seconds" type="number" min="30" max="86400" step="30"></label>
+                        </div>
+                    </section>
+
+                    <section class="settings-section">
+                        <div class="settings-section-head">
+                            <div><span class="metric-label">联网检索</span><h2>实时法规与外部事实</h2></div>
+                            <button class="btn" id="settings-test-web-search" type="button">测试联网检索</button>
+                        </div>
+                        <div class="settings-toggle-grid">
+                            <label class="settings-toggle"><input id="settings-web-search-enabled" type="checkbox"><span></span><b>启用受控联网检索</b></label>
+                        </div>
+                        <div class="settings-grid settings-grid-compact">
+                            <label><span>搜索服务</span><select id="settings-web-search-provider"><option value="tavily">Tavily API</option><option value="bing_html">Bing 网页（实验）</option><option value="duckduckgo_html">DuckDuckGo 网页（实验）</option></select></label>
+                            <label><span>搜索 API Key <small id="settings-web-search-key-status"></small></span><input id="settings-web-search-api-key" type="password" autocomplete="new-password" placeholder="输入新密钥以替换"></label>
+                            <label><span>搜索超时（秒）</span><input id="settings-web-search-timeout" type="number" min="1" max="60" step="0.5"></label>
+                            <label><span>最大结果数</span><input id="settings-web-search-max-results" type="number" min="1" max="10"></label>
+                        </div>
+                    </section>
+
+                    <section class="settings-section settings-feeds-section">
+                        <div class="settings-section-head">
+                            <div><span class="metric-label">信息源</span><h2>RSS 与政策来源</h2></div>
+                            <button class="icon-button settings-add-feed" id="settings-add-feed" type="button" title="添加 RSS 来源" aria-label="添加 RSS 来源">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                            </button>
+                        </div>
+                        <div class="settings-feed-list" id="settings-feed-list"></div>
+                    </section>
+                    <p class="settings-form-status" id="settings-form-status" role="status"></p>
+                </form>
+            </div>
+        </section>
+
+        <section id="view-skills" class="view">
+            <div class="page-header">
+                <div>
+                    <h1>我的技能</h1>
+                    <p>把固定分析节点编排为可复用的审查流程；内置技能仅可运行，自建技能可保存和维护。</p>
+                </div>
+                <div class="header-actions">
+                    <span class="data-mode-badge" id="skills-service-status">正在连接技能服务</span>
+                    <button class="btn" id="skills-refresh-button" type="button">刷新</button>
+                    <button class="btn btn-primary" id="skills-create-button" type="button">新建技能</button>
+                </div>
+            </div>
+            <div class="page-body skills-page">
+                <div class="skills-layout">
+                    <aside class="skills-list-panel" aria-label="技能列表">
+                        <div class="skills-panel-heading">
+                            <div><span class="metric-label">已保存流程</span><h2>技能列表</h2></div>
+                            <span id="skills-count" class="skills-count">0</span>
+                        </div>
+                        <div id="skills-list" class="skills-list" aria-live="polite"></div>
+                    </aside>
+                    <section class="skills-workbench" aria-live="polite">
+                        <div id="skills-empty-state" class="skills-empty-state">
+                            <strong>选择一个技能</strong>
+                            <p>查看节点顺序，输入问题后即可运行已保存的流程。</p>
+                        </div>
+                        <div id="skills-detail" class="skills-detail" hidden></div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-legal" class="view">
+            <div class="page-header">
+                <div>
+                    <h1>法律风控工作台</h1>
+                    <p>支持合同、法规、尽调材料上传，以对话方式完成审查、解释与报告生成。</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn" id="legal-upload-button" type="button">上传材料</button>
+                    <button class="btn btn-primary" id="legal-contract-review-button" type="button">审查所选材料</button>
+                </div>
+            </div>
+            <div class="legal-layout">
+                <aside class="file-panel legal-thread-panel">
+                    <div class="chat-sidebar-section">
+                        <button class="chat-new-button" type="button" id="new-chat-button">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                            <span>新建对话</span>
+                        </button>
+                        <div class="chat-thread-list" id="legal-thread-list"></div>
+                    </div>
+                    <div class="legal-source-status">
+                        <div class="legal-source-heading">
+                            <h2>分析材料</h2>
+                            <button class="source-upload-button" id="legal-upload-panel-button" type="button" title="上传材料" aria-label="上传材料">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M5 20h14"/></svg>
+                            </button>
+                        </div>
+                        <p class="legal-source-note" id="document-parser-status">正在检查材料解析服务</p>
+                        <p class="legal-selection-status" id="legal-selection-status" aria-live="polite">尚未选择材料；可选择最多 3 份已解析材料用于本次 RAG 分析。</p>
+                        <div class="legal-document-list" id="legal-document-list"></div>
+                    </div>
+                </aside>
+                <div class="chat-panel">
+                    <div class="messages" id="legal-messages"></div>
+                    <div class="chat-drop-overlay" id="chat-drop-overlay" aria-hidden="true">
+                        <span>松开上传材料</span>
+                    </div>
+                    <div class="chat-composer">
+                        <div class="chat-attachment-tray" id="chat-attachment-tray" aria-live="polite"></div>
+                        <div class="chat-input">
+                            <button class="attachment-button" id="chat-attachment-button" type="button" title="上传附件" aria-label="上传附件">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21.4 11.6-8.6 8.6a6 6 0 0 1-8.5-8.5l9-9a4 4 0 0 1 5.7 5.7l-9 9a2 2 0 1 1-2.8-2.8l8.3-8.3"/></svg>
+                            </button>
+                            <textarea rows="1" placeholder="询问法律风险、审查条款或生成整改建议"></textarea>
+                            <button class="send-button" type="button" aria-label="发送">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <aside class="evidence-panel">
+                    <h2>证据详情</h2>
+                    <div class="empty-state" id="evidence-empty">等待分析</div>
+                    <div class="evidence-provenance" id="evidence-provenance" hidden aria-live="polite"></div>
+                    <div class="confidence" id="evidence-confidence" hidden></div>
+                    <div class="quote" id="evidence-quote" hidden></div>
+                    <h2>风险标签</h2>
+                    <div class="tag-list" id="risk-tags"></div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <input id="chat-attachment-input" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.png,.jpg,.jpeg,.jp2,.webp,.gif,.bmp,.txt,.md,.csv" multiple hidden>
+
+    <dialog class="document-dialog" id="document-upload-dialog" aria-labelledby="document-upload-title">
+        <form class="document-dialog-content" id="document-upload-form" method="dialog">
+            <div class="document-dialog-head">
+                <div>
+                    <h2 id="document-upload-title">上传材料</h2>
+                    <p>PDF、Office 和图片会发送至 MineU 云端解析；图片可选送视觉模型提取可见事实。单个文件限 10 MB，PDF 最多 20 页。</p>
+                </div>
+                <button class="dialog-close-button" id="document-upload-close" type="button" aria-label="关闭">×</button>
+            </div>
+            <label class="document-dropzone" for="document-upload-input">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M5 20h14"/></svg>
+                <strong>选择材料</strong>
+                <span>支持 PDF、Office、图片与 UTF-8 文本，单个文件不超过 10 MB</span>
+                <input id="document-upload-input" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.png,.jpg,.jpeg,.jp2,.webp,.gif,.bmp,.txt,.md,.csv" hidden>
+            </label>
+            <div class="document-file-name" id="document-upload-filename">尚未选择文件</div>
+            <p class="document-upload-status" id="document-upload-status" role="status"></p>
+            <div class="document-dialog-actions">
+                <button class="btn" id="document-upload-cancel" type="button">取消</button>
+                <button class="btn btn-primary" id="document-upload-submit" type="submit" disabled>开始解析</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog class="document-dialog document-preview-dialog" id="document-preview-dialog" aria-labelledby="document-preview-title">
+        <div class="document-dialog-content">
+            <div class="document-dialog-head">
+                <div><h2 id="document-preview-title">材料解析结果</h2></div>
+                <button class="dialog-close-button" id="document-preview-close" type="button" aria-label="关闭">×</button>
+            </div>
+            <pre class="document-preview" id="document-preview-content"></pre>
+        </div>
+    </dialog>
+
+    <dialog class="document-dialog supplier-dialog" id="supplier-dialog" aria-labelledby="supplier-dialog-title">
+        <form class="document-dialog-content" id="supplier-form" method="dialog">
+            <div class="document-dialog-head">
+                <div>
+                    <h2 id="supplier-dialog-title">添加供应商</h2>
+                    <p>保存后会同步更新地图、区域风险分和关联的市场信号。</p>
+                </div>
+                <button class="dialog-close-button" type="button" data-supplier-dialog-close aria-label="关闭">×</button>
+            </div>
+            <input id="supplier-id" type="hidden">
+            <div class="supplier-form-grid">
+                <label><span>供应商名称</span><input id="supplier-name" required maxlength="160"></label>
+                <label><span>品类</span><input id="supplier-category" required maxlength="80" placeholder="如：电子元器件"></label>
+                <label><span>国家/地区</span><input id="supplier-country" list="supply-country-list" required maxlength="80" placeholder="中国、德国、美国"></label>
+                <label><span>省份（中国填写）</span><input id="supplier-province" maxlength="80" placeholder="如：广东"></label>
+                <label><span>城市</span><input id="supplier-city" maxlength="80"></label>
+                <label><span>证券代码（可选）</span><input id="supplier-security-code" maxlength="20" placeholder="600519 / sh688981 / NVDA"></label>
+                <label><span>采购占比 %</span><input id="supplier-spend-share" type="number" min="0" max="100" step="0.1" value="0"></label>
+                <label><span>业务关键性 %</span><input id="supplier-criticality" type="number" min="0" max="100" step="1" value="50"></label>
+                <label><span>可替代来源数</span><input id="supplier-alternate-sources" type="number" min="0" max="99" step="1" value="0"></label>
+                <label><span>合规暴露 %</span><input id="supplier-compliance-risk" type="number" min="0" max="100" step="1" value="0"></label>
+                <label class="supplier-form-wide"><span>外部风险标签</span><input id="supplier-external-tags" maxlength="300" placeholder="用逗号分隔，如：原油、红海、出口管制"></label>
+                <label><span>风险责任人</span><input id="supplier-risk-owner" maxlength="80" placeholder="如：采购负责人"></label>
+                <label><span>控制状态</span><select id="supplier-control-status"><option value="not_started">未启动</option><option value="monitoring">持续监控</option><option value="mitigating">整改中</option><option value="closed">已关闭</option></select></label>
+                <label><span>最近复核日</span><input id="supplier-last-reviewed-at" type="date"></label>
+                <label><span>证据引用</span><input id="supplier-evidence-refs" maxlength="300" placeholder="用逗号分隔，如：合同编号、审计底稿"></label>
+                <label class="supplier-form-wide"><span>备注</span><textarea id="supplier-notes" rows="3" maxlength="1000"></textarea></label>
+            </div>
+            <datalist id="supply-country-list">
+                <option value="中国"><option value="美国"><option value="德国"><option value="日本"><option value="韩国"><option value="新加坡"><option value="越南"><option value="印度"><option value="法国"><option value="英国"><option value="墨西哥"><option value="巴西">
+            </datalist>
+            <p class="supplier-form-status" id="supplier-form-status" aria-live="polite"></p>
+            <div class="document-dialog-actions">
+                <button class="btn" type="button" data-supplier-dialog-close>取消</button>
+                <button class="btn btn-primary" type="submit" id="supplier-save-button">保存供应商</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog class="document-dialog skill-editor-dialog" id="skill-editor-dialog" aria-labelledby="skill-editor-title">
+        <form class="document-dialog-content skill-editor-content" id="skill-editor-form">
+            <div class="document-dialog-head">
+                <div>
+                    <h2 id="skill-editor-title">新建技能</h2>
+                    <p>节点类型由服务端统一管理；本页面只编排节点，不直接调用模型、检索或向量服务。</p>
+                </div>
+                <button class="dialog-close-button" id="skill-editor-close" type="button" aria-label="关闭">×</button>
+            </div>
+            <div class="skill-editor-fields">
+                <label><span>技能名称</span><input id="skill-editor-name" required maxlength="80" placeholder="例如：合同条款风险初审"></label>
+                <label><span>用途说明</span><textarea id="skill-editor-description" rows="3" maxlength="500" placeholder="说明这个流程适合处理什么问题"></textarea></label>
+            </div>
+            <section class="skill-node-picker" aria-labelledby="skill-node-picker-title">
+                <div class="skill-editor-section-head">
+                    <div><span class="metric-label">固定节点</span><h3 id="skill-node-picker-title">选择并排序</h3></div>
+                    <span id="skill-node-picker-status" class="skill-node-picker-status">正在读取节点类型</span>
+                </div>
+                <div id="skill-node-types" class="skill-node-types"></div>
+                <div class="skill-selected-heading"><span>执行顺序</span><small>可使用上下按钮调整顺序</small></div>
+                <ol id="skill-selected-nodes" class="skill-selected-nodes"></ol>
+            </section>
+            <p class="skill-editor-status" id="skill-editor-status" role="status"></p>
+            <div class="document-dialog-actions skill-editor-actions">
+                <button class="btn" id="skill-editor-validate" type="button">校验流程</button>
+                <button class="btn" id="skill-editor-cancel" type="button">取消</button>
+                <button class="btn btn-primary" id="skill-editor-save" type="submit">保存技能</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="./china-provinces.js"></script>
+    <script src="./world-countries.js"></script>
+    <script src="./app.js?v=riskflow-ux-20260903-4"></script>
+</body>
+</html>

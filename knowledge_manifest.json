@@ -1,0 +1,947 @@
+{
+  "version": "0.3.5",
+  "description": "知识库法规与标准清单。用于增量评测、入库质量检查和最终报告中的知识覆盖说明。",
+  "documents": [
+    {
+      "source": "中华人民共和国个人信息保护法",
+      "file_path": "src/knowledge/data_compliance/中华人民共和国个人信息保护法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "数据合规",
+      "domain": "data_compliance",
+      "version": "2021",
+      "effective_date": "2021-11-01",
+      "expected_anchors": [
+        {
+          "article_no": 5,
+          "label": "个人信息处理原则"
+        },
+        {
+          "article_no": 13,
+          "label": "个人信息处理合法性基础"
+        },
+        {
+          "article_no": 17,
+          "label": "告知义务"
+        },
+        {
+          "article_no": 28,
+          "label": "敏感个人信息"
+        },
+        {
+          "article_no": 38,
+          "label": "个人信息出境条件"
+        },
+        {
+          "article_no": 57,
+          "label": "泄露等安全事件通知"
+        }
+      ],
+      "smoke_cases": [
+        "smoke_pipl_principles",
+        "smoke_pipl_sensitive_info",
+        "smoke_risk_location_ads"
+      ]
+    },
+    {
+      "source": "中华人民共和国数据安全法",
+      "file_path": "src/knowledge/data_compliance/中华人民共和国数据安全法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "数据合规",
+      "domain": "data_compliance",
+      "version": "2021",
+      "effective_date": "2021-09-01",
+      "expected_anchors": [
+        {
+          "article_no": 21,
+          "label": "数据分类分级保护制度"
+        }
+      ],
+      "smoke_cases": [
+        "smoke_data_security_classification"
+      ]
+    },
+    {
+      "source": "中华人民共和国网络安全法",
+      "file_path": "src/knowledge/data_compliance/中华人民共和国网络安全法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "数据合规",
+      "domain": "data_compliance",
+      "version": "2017",
+      "effective_date": "2017-06-01",
+      "expected_anchors": [
+        {
+          "article_no": 42,
+          "label": "网络运营者个人信息保护义务"
+        },
+        {
+          "article_no": 43,
+          "label": "个人信息删除和更正权"
+        },
+        {
+          "article_no": 44,
+          "label": "不得非法获取出售个人信息"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "数据出境安全评估办法",
+      "file_path": "src/knowledge/data_compliance/数据出境安全评估办法.txt",
+      "document_type": "法律法规",
+      "law_level": "部门规章",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "国家互联网信息办公室",
+      "category": "数据合规",
+      "domain": "data_export",
+      "version": "2022",
+      "effective_date": "2022-09-01",
+      "expected_anchors": [
+        {
+          "article_no": 4,
+          "label": "数据出境安全评估申报情形"
+        },
+        {
+          "article_no": 5,
+          "label": "数据出境安全评估申报材料"
+        }
+      ],
+      "smoke_cases": [
+        "smoke_data_export_assessment"
+      ]
+    },
+    {
+      "source": "个人信息出境标准合同办法",
+      "file_path": "src/knowledge/data_compliance/个人信息出境标准合同办法.txt",
+      "document_type": "法律法规",
+      "law_level": "部门规章",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "国家互联网信息办公室",
+      "category": "数据合规",
+      "domain": "data_export",
+      "version": "2023",
+      "effective_date": "2023-06-01",
+      "expected_anchors": [
+        {
+          "article_no": 5,
+          "label": "个人信息出境影响评估"
+        },
+        {
+          "article_no": 8,
+          "label": "标准合同重新评估和补充订立"
+        }
+      ],
+      "smoke_cases": [
+        "smoke_standard_contract_reassessment"
+      ]
+    },
+    {
+      "source": "中华人民共和国保守国家秘密法",
+      "file_path": "src/knowledge/security_compliance/中华人民共和国保守国家秘密法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "安全合规",
+      "domain": "security_compliance",
+      "version": "2024",
+      "effective_date": "2024-05-01",
+      "expected_anchors": [
+        {
+          "article_no": 2,
+          "label": "国家秘密定义"
+        },
+        {
+          "article_no": 4,
+          "label": "保密工作原则"
+        },
+        {
+          "article_no": 8,
+          "label": "保密工作责任制"
+        },
+        {
+          "article_no": 15,
+          "label": "国家秘密的范围"
+        },
+        {
+          "article_no": 24,
+          "label": "定期审核国家秘密"
+        },
+        {
+          "article_no": 58,
+          "label": "泄露国家秘密的法律责任"
+        }
+      ],
+      "smoke_cases": [
+        "smoke_state_secrets_definition",
+        "smoke_state_secrets_responsibility"
+      ]
+    },
+    {
+      "source": "中华人民共和国公司法",
+      "file_path": "src/knowledge/corporate/中华人民共和国公司法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "公司治理",
+      "domain": "corporate",
+      "version": "2023",
+      "effective_date": "2024-07-01",
+      "expected_anchors": [
+        {
+          "article_no": 23,
+          "label": "股东滥用公司法人独立地位的连带责任"
+        },
+        {
+          "article_no": 49,
+          "label": "股东按期足额缴纳出资义务"
+        },
+        {
+          "article_no": 59,
+          "label": "股东会职权"
+        },
+        {
+          "article_no": 86,
+          "label": "股权转让通知义务"
+        },
+        {
+          "article_no": 180,
+          "label": "董事忠实义务与勤勉义务"
+        },
+        {
+          "article_no": 181,
+          "label": "董事禁止行为"
+        },
+        {
+          "article_no": 182,
+          "label": "董事关联交易报告义务"
+        },
+        {
+          "article_no": 210,
+          "label": "利润分配与公积金"
+        }
+      ],
+      "smoke_cases": [
+        "smoke_company_shareholder_rights",
+        "smoke_company_director_duty"
+      ]
+    },
+    {
+      "source": "中华人民共和国反不正当竞争法",
+      "file_path": "src/knowledge/market_regulation/中华人民共和国反不正当竞争法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "市场秩序",
+      "domain": "market_regulation",
+      "version": "2025",
+      "effective_date": "2025-10-15",
+      "expected_anchors": [
+        {
+          "article_no": 2,
+          "label": "经营者公平竞争原则"
+        },
+        {
+          "article_no": 7,
+          "label": "禁止混淆行为"
+        },
+        {
+          "article_no": 8,
+          "label": "禁止商业贿赂"
+        },
+        {
+          "article_no": 9,
+          "label": "禁止虚假宣传"
+        },
+        {
+          "article_no": 10,
+          "label": "禁止侵犯商业秘密"
+        },
+        {
+          "article_no": 22,
+          "label": "不正当竞争民事责任"
+        }
+      ],
+      "smoke_cases": [
+        "smoke_unfair_competition_acts",
+        "smoke_trade_secret_protection"
+      ]
+    },
+    {
+      "source": "中华人民共和国反垄断法",
+      "file_path": "src/knowledge/market_regulation/中华人民共和国反垄断法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "市场秩序",
+      "domain": "market_regulation",
+      "version": "2022",
+      "effective_date": "2008-08-01",
+      "expected_anchors": [
+        {
+          "article_no": 3,
+          "label": "垄断行为类型"
+        },
+        {
+          "article_no": 7,
+          "label": "禁止滥用市场支配地位"
+        },
+        {
+          "article_no": 10,
+          "label": "禁止滥用行政权力排除限制竞争"
+        },
+        {
+          "article_no": 41,
+          "label": "禁止妨碍商品自由流通"
+        },
+        {
+          "article_no": 45,
+          "label": "禁止制定排除限制竞争的规定"
+        },
+        {
+          "article_no": 54,
+          "label": "涉嫌滥用行政权力调查"
+        }
+      ],
+      "smoke_cases": [
+        "smoke_antitrust_monopoly_types",
+        "smoke_antitrust_abuse_dominance"
+      ]
+    },
+    {
+      "source": "中华人民共和国商标法",
+      "file_path": "src/knowledge/intellectual_property/中华人民共和国商标法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "知识产权",
+      "domain": "intellectual_property",
+      "version": "2019",
+      "effective_date": "1983-03-01",
+      "expected_anchors": [
+        {
+          "article_no": 3,
+          "label": "注册商标专用权"
+        },
+        {
+          "article_no": 7,
+          "label": "诚实信用原则"
+        },
+        {
+          "article_no": 57,
+          "label": "侵犯注册商标专用权行为"
+        },
+        {
+          "article_no": 63,
+          "label": "商标侵权赔偿数额"
+        },
+        {
+          "article_no": 67,
+          "label": "假冒注册商标刑事责任"
+        }
+      ],
+      "smoke_cases": [
+        "smoke_trademark_infringement",
+        "smoke_trademark_registration"
+      ]
+    },
+    {
+      "source": "中华人民共和国增值税法",
+      "file_path": "src/knowledge/tax/中华人民共和国增值税法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "财税",
+      "domain": "tax",
+      "version": "2024",
+      "effective_date": "2026-01-01",
+      "expected_anchors": [
+        {
+          "article_no": 3,
+          "label": "增值税纳税人范围"
+        },
+        {
+          "article_no": 10,
+          "label": "增值税税率"
+        },
+        {
+          "article_no": 14,
+          "label": "应纳税额计算"
+        },
+        {
+          "article_no": 22,
+          "label": "不得抵扣的进项税额"
+        },
+        {
+          "article_no": 34,
+          "label": "增值税发票管理"
+        }
+      ],
+      "smoke_cases": [
+        "smoke_vat_taxpayer",
+        "smoke_vat_deduction"
+      ]
+    },
+    {
+      "source": "中华人民共和国民法典",
+      "file_path": "src/knowledge/civil_law/中华人民共和国民法典.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会",
+      "category": "民商事",
+      "domain": "civil_law",
+      "version": "2020",
+      "effective_date": "2021-01-01",
+      "expected_anchors": [
+        {
+          "article_no": 4,
+          "label": "民事主体法律地位平等"
+        },
+        {
+          "article_no": 7,
+          "label": "诚实信用原则"
+        },
+        {
+          "article_no": 8,
+          "label": "公序良俗原则"
+        },
+        {
+          "article_no": 143,
+          "label": "民事法律行为有效要件"
+        },
+        {
+          "article_no": 205,
+          "label": "物权的种类和内容"
+        },
+        {
+          "article_no": 465,
+          "label": "合同法律约束力"
+        },
+        {
+          "article_no": 995,
+          "label": "人格权请求权不适用诉讼时效"
+        },
+        {
+          "article_no": 1046,
+          "label": "婚姻自由"
+        },
+        {
+          "article_no": 1120,
+          "label": "继承权受法律保护"
+        },
+        {
+          "article_no": 1165,
+          "label": "过错侵权责任"
+        }
+      ],
+      "smoke_cases": [
+        "smoke_civil_principles",
+        "smoke_civil_contract_validity",
+        "smoke_civil_property_rights",
+        "smoke_civil_contract_performance",
+        "smoke_civil_personality_rights",
+        "smoke_civil_marital_property",
+        "smoke_civil_inheritance",
+        "smoke_civil_tort_liability"
+      ]
+    },
+    {
+      "source": "中华人民共和国专利法",
+      "file_path": "src/knowledge/intellectual_property/中华人民共和国专利法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "知识产权",
+      "domain": "intellectual_property",
+      "version": "2020",
+      "effective_date": "1985-04-01",
+      "expected_anchors": [
+        {
+          "article_no": 2,
+          "label": "发明创造定义"
+        },
+        {
+          "article_no": 45,
+          "label": "专利权无效宣告"
+        },
+        {
+          "article_no": 53,
+          "label": "强制许可情形"
+        },
+        {
+          "article_no": 65,
+          "label": "专利侵权纠纷解决"
+        },
+        {
+          "article_no": 71,
+          "label": "专利侵权赔偿数额"
+        },
+        {
+          "article_no": 74,
+          "label": "专利侵权诉讼时效"
+        }
+      ],
+      "smoke_cases": [
+        "smoke_patent_grant_conditions",
+        "smoke_patent_infringement"
+      ]
+    },
+    {
+      "source": "中华人民共和国专利法实施细则",
+      "file_path": "src/knowledge/intellectual_property/中华人民共和国专利法实施细则.txt",
+      "document_type": "法律法规",
+      "law_level": "行政法规",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "国务院",
+      "category": "知识产权",
+      "domain": "intellectual_property",
+      "version": "2023",
+      "effective_date": "2001-07-01",
+      "expected_anchors": [
+        {
+          "article_no": 7,
+          "label": "国防专利申请保密审查"
+        },
+        {
+          "article_no": 110,
+          "label": "专利申请费用种类"
+        }
+      ],
+      "smoke_cases": [
+        "smoke_patent_implementation_fees"
+      ]
+    },
+    {
+      "source": "中华人民共和国治安管理处罚法",
+      "file_path": "src/knowledge/administrative_law/中华人民共和国治安管理处罚法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "行政法",
+      "domain": "administrative_law",
+      "version": "2025",
+      "effective_date": "2026-01-01",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "治安管理处罚立法目的"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国行政处罚法",
+      "file_path": "src/knowledge/administrative_law/中华人民共和国行政处罚法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "行政法",
+      "domain": "administrative_law",
+      "version": "2021",
+      "effective_date": "2021-07-15",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "行政处罚立法目的"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国行政复议法",
+      "file_path": "src/knowledge/administrative_law/中华人民共和国行政复议法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "行政法",
+      "domain": "administrative_law",
+      "version": "2023",
+      "effective_date": "2024-01-01",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "行政复议立法目的"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国行政诉讼法",
+      "file_path": "src/knowledge/administrative_law/中华人民共和国行政诉讼法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "行政法",
+      "domain": "administrative_law",
+      "version": "2017",
+      "effective_date": "2017-07-01",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "行政诉讼立法目的"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国民事诉讼法",
+      "file_path": "src/knowledge/civil_law/中华人民共和国民事诉讼法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "民商事",
+      "domain": "civil_procedure",
+      "version": "2023",
+      "effective_date": "2024-01-01",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "民事诉讼立法目的"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国刑事诉讼法",
+      "file_path": "src/knowledge/criminal_law/中华人民共和国刑事诉讼法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会",
+      "category": "刑事",
+      "domain": "criminal_law",
+      "version": "2018",
+      "effective_date": "2018-10-26",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "刑事诉讼法任务"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国刑法",
+      "file_path": "src/knowledge/criminal_law/中华人民共和国刑法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会",
+      "category": "刑事",
+      "domain": "criminal_law",
+      "version": "2020",
+      "effective_date": "2021-03-01",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "刑法任务与基本原则"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "网络数据安全管理条例",
+      "file_path": "src/knowledge/data_compliance/网络数据安全管理条例.txt",
+      "document_type": "法律法规",
+      "law_level": "行政法规",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "国务院",
+      "category": "数据合规",
+      "domain": "data_compliance",
+      "version": "2024",
+      "effective_date": "2025-01-01",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "网络数据安全管理目的"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国生态环境法典",
+      "file_path": "src/knowledge/environment/中华人民共和国生态环境法典.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会",
+      "category": "生态环境",
+      "domain": "environment",
+      "version": "2026",
+      "effective_date": "2026-08-15",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "生态环境法典立法目的"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国著作权法",
+      "file_path": "src/knowledge/intellectual_property/中华人民共和国著作权法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "知识产权",
+      "domain": "intellectual_property",
+      "version": "2020",
+      "effective_date": "2021-06-01",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "著作权保护目的"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国劳动争议调解仲裁法",
+      "file_path": "src/knowledge/labor/中华人民共和国劳动争议调解仲裁法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "劳动用工",
+      "domain": "labor",
+      "version": "2007",
+      "effective_date": "2008-05-01",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "劳动争议调解仲裁目的"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国劳动法",
+      "file_path": "src/knowledge/labor/中华人民共和国劳动法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "劳动用工",
+      "domain": "labor",
+      "version": "2018",
+      "effective_date": "2018-12-29",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "劳动者合法权益保护"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国出口管制法",
+      "file_path": "src/knowledge/market_regulation/中华人民共和国出口管制法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "国际贸易",
+      "domain": "market_regulation",
+      "version": "2020",
+      "effective_date": "2020-12-01",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "出口管制立法目的"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国对外贸易法",
+      "file_path": "src/knowledge/market_regulation/中华人民共和国对外贸易法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "国际贸易",
+      "domain": "market_regulation",
+      "version": "2025",
+      "effective_date": "2026-03-01",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "对外贸易立法目的"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国消费者权益保护法",
+      "file_path": "src/knowledge/market_regulation/中华人民共和国消费者权益保护法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "市场秩序",
+      "domain": "market_regulation",
+      "version": "2013",
+      "effective_date": "2014-03-15",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "消费者权益保护目的"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国电子商务法",
+      "file_path": "src/knowledge/market_regulation/中华人民共和国电子商务法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "市场秩序",
+      "domain": "market_regulation",
+      "version": "2018",
+      "effective_date": "2019-01-01",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "电子商务法目的"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国关税法",
+      "file_path": "src/knowledge/tax/中华人民共和国关税法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "财税",
+      "domain": "tax",
+      "version": "2024",
+      "effective_date": "2024-12-01",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "关税法立法目的"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国契税法",
+      "file_path": "src/knowledge/tax/中华人民共和国契税法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "财税",
+      "domain": "tax",
+      "version": "2020",
+      "effective_date": "2021-09-01",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 1,
+          "label": "契税纳税人"
+        }
+      ],
+      "smoke_cases": []
+    },
+    {
+      "source": "中华人民共和国环境保护税法",
+      "file_path": "src/knowledge/tax/中华人民共和国环境保护税法.txt",
+      "document_type": "法律法规",
+      "law_level": "法律",
+      "authority_level": "国家级",
+      "jurisdiction": "全国",
+      "issuing_authority": "全国人民代表大会常务委员会",
+      "category": "财税",
+      "domain": "tax",
+      "version": "2025",
+      "effective_date": "2018-01-01",
+      "legal_effect": "现行有效",
+      "expected_anchors": [
+        {
+          "article_no": 2,
+          "label": "环境保护税纳税人"
+        },
+        {
+          "section_no": "附表一",
+          "label": "环境保护税税目税额表"
+        }
+      ],
+      "smoke_cases": []
+    }
+  ]
+}

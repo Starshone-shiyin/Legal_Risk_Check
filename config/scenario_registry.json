@@ -1,0 +1,480 @@
+{
+  "version": "0.4.6.4",
+  "description": "Scenario Registry 雏形。仅用于统一登记法律风险场景、规则链接与评测映射；本版本不接入 RAG 主流程，不改变任何匹配逻辑。",
+  "scenarios": [
+    {
+      "scenario_id": "trade_secret_customer_list_leak",
+      "domain": "市场秩序",
+      "description": "员工离职、内部导出或外部使用客户名单等信息，可能同时触发商业秘密保护、数据泄露和内部管理失职风险。",
+      "risk_level": "high",
+      "core_articles": [
+        {
+          "source": "中华人民共和国反不正当竞争法",
+          "article_no": 10
+        },
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 51
+        },
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 57
+        }
+      ],
+      "risk_types": [
+        "商业秘密侵权",
+        "内部人员违规",
+        "数据泄露",
+        "管理失职"
+      ],
+      "required_actions": [
+        "停止使用相关信息",
+        "完善访问权限、日志审计、异常导出拦截等管理和技术措施",
+        "核查客户名单是否具有商业价值并已采取保密措施"
+      ],
+      "legal_terms": [
+        "商业秘密",
+        "客户名单",
+        "保密措施",
+        "数据泄露"
+      ],
+      "linked_anchor_rule_ids": [
+        "pipl_data_leak",
+        "pipl_internal_leak",
+        "unfair_competition_trade_secret"
+      ],
+      "linked_risk_rule_ids": [
+        "risk_rule_0",
+        "risk_rule_4"
+      ],
+      "eval_case_ids": [
+        "risk_employee_data_export_001",
+        "risk_unfair_competition_trade_secret_001"
+      ]
+    },
+    {
+      "scenario_id": "pipl_children_consent",
+      "domain": "数据合规",
+      "description": "处理儿童或未成年人个人信息时，仅依赖普通用户协议或概括同意，未取得有效监护人同意并制定专门规则。",
+      "risk_level": "high",
+      "core_articles": [
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 28
+        },
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 29
+        },
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 31
+        }
+      ],
+      "risk_types": [
+        "儿童信息保护不力",
+        "未取得有效监护人同意"
+      ],
+      "required_actions": [
+        "制定专门的儿童个人信息处理规则",
+        "以合理方式核验并取得监护人同意",
+        "限制儿童个人信息收集范围并明确保存期限和删除机制"
+      ],
+      "legal_terms": [
+        "儿童个人信息",
+        "敏感个人信息",
+        "监护人同意"
+      ],
+      "linked_anchor_rule_ids": [
+        "pipl_children"
+      ],
+      "linked_risk_rule_ids": [
+        "risk_rule_3"
+      ],
+      "eval_case_ids": [
+        "risk_children_data_001"
+      ]
+    },
+    {
+      "scenario_id": "pipl_automated_decision_bias",
+      "domain": "数据合规",
+      "description": "平台基于用户画像、消费能力或算法模型作出自动化决策，存在差别待遇、算法偏见或缺少人工复核渠道的风险。",
+      "risk_level": "high",
+      "core_articles": [
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 24
+        },
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 48
+        }
+      ],
+      "risk_types": [
+        "自动化决策不当",
+        "算法歧视"
+      ],
+      "required_actions": [
+        "优化算法规则并开展公平性审计",
+        "审查算法模型并消除偏见",
+        "提供解释说明、拒绝自动化决策或人工复核申诉渠道"
+      ],
+      "legal_terms": [
+        "自动化决策",
+        "公平公正",
+        "算法歧视",
+        "差异化定价"
+      ],
+      "linked_anchor_rule_ids": [
+        "pipl_automated_decision",
+        "pipl_automated_decision_full"
+      ],
+      "linked_risk_rule_ids": [
+        "risk_rule_6"
+      ],
+      "eval_case_ids": [
+        "risk_algorithm_bias_001",
+        "risk_user_profile_overuse_001"
+      ]
+    },
+    {
+      "scenario_id": "pipl_cross_border_sensitive_medical",
+      "domain": "数据合规",
+      "description": "医疗健康、病历等敏感个人信息被用于模型训练或向境外接收方提供，涉及单独同意、目的变更和个人信息出境合规。",
+      "risk_level": "high",
+      "core_articles": [
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 28
+        },
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 29
+        },
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 38
+        },
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 39
+        }
+      ],
+      "risk_types": [
+        "敏感个人信息处理风险",
+        "数据出境合规风险",
+        "超出原授权范围使用"
+      ],
+      "required_actions": [
+        "开展数据出境安全评估",
+        "明确境外接收方信息、处理目的和处理方式",
+        "重新取得用户明确同意或对数据进行匿名化、去标识化处理"
+      ],
+      "legal_terms": [
+        "敏感个人信息",
+        "医疗健康",
+        "病历",
+        "单独同意",
+        "个人信息出境"
+      ],
+      "linked_anchor_rule_ids": [
+        "pipl_sensitive_info",
+        "pipl_sensitive_export",
+        "pipl_data_export"
+      ],
+      "linked_risk_rule_ids": [
+        "risk_rule_2",
+        "risk_rule_9"
+      ],
+      "eval_case_ids": [
+        "risk_ai_medical_training_export_001",
+        "risk_data_export_overseas_001"
+      ]
+    },
+    {
+      "scenario_id": "vat_false_invoice_deduction",
+      "domain": "财税",
+      "description": "企业通过虚开发票或不符合抵扣范围的票据抵扣进项税额，可能引发行政治理、税务处罚或刑事风险。",
+      "risk_level": "high",
+      "core_articles": [
+        {
+          "source": "中华人民共和国增值税法",
+          "article_no": 14
+        },
+        {
+          "source": "中华人民共和国增值税法",
+          "article_no": 34
+        },
+        {
+          "source": "中华人民共和国增值税法",
+          "article_no": 37
+        }
+      ],
+      "risk_types": [
+        "虚开发票风险",
+        "进项抵扣违规风险",
+        "进项抵扣范围风险"
+      ],
+      "required_actions": [
+        "停止违规抵扣",
+        "补缴税款及滞纳金",
+        "建立发票合规审核机制"
+      ],
+      "legal_terms": [
+        "虚开发票",
+        "进项税额",
+        "抵扣",
+        "刑事责任"
+      ],
+      "linked_anchor_rule_ids": [
+        "vat_taxpayer_rate",
+        "vat_input_deduction",
+        "vat_invoice"
+      ],
+      "linked_risk_rule_ids": [
+        "risk_rule_33",
+        "risk_rule_34",
+        "risk_rule_36"
+      ],
+      "eval_case_ids": [
+        "risk_vat_false_invoice_001"
+      ]
+    },
+    {
+      "scenario_id": "pipl_facial_recognition_attendance",
+      "domain": "数据合规",
+      "description": "企业使用人脸识别考勤等生物识别方式，未充分告知用途、方式、信息种类、存储期限或未取得单独同意。",
+      "risk_level": "high",
+      "core_articles": [
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 17
+        },
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 28
+        },
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 29
+        },
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 30
+        }
+      ],
+      "risk_types": [
+        "敏感个人信息违规收集",
+        "未履行告知义务"
+      ],
+      "required_actions": [
+        "补充告知处理规则",
+        "获取单独同意",
+        "明确存储期限和删除机制",
+        "提供替代识别方式"
+      ],
+      "legal_terms": [
+        "人脸信息",
+        "生物识别",
+        "敏感个人信息",
+        "单独同意",
+        "存储期限"
+      ],
+      "linked_anchor_rule_ids": [
+        "pipl_sensitive_info"
+      ],
+      "linked_risk_rule_ids": [],
+      "eval_case_ids": [
+        "risk_employee_facial_001"
+      ]
+    },
+    {
+      "scenario_id": "pipl_data_export_security_assessment",
+      "domain": "数据合规",
+      "description": "处理大量个人信息或重要数据并向境外提供时，未依法申报数据出境安全评估或未评估出境风险。",
+      "risk_level": "high",
+      "core_articles": [
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 38
+        },
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 39
+        },
+        {
+          "source": "数据出境安全评估办法",
+          "article_no": 4
+        },
+        {
+          "source": "数据出境安全评估办法",
+          "article_no": 5
+        }
+      ],
+      "risk_types": [
+        "数据出境不合规",
+        "未履行安全评估义务"
+      ],
+      "required_actions": [
+        "开展数据出境安全评估",
+        "向网信部门申报",
+        "履行告知同意义务",
+        "明确境外接收方信息"
+      ],
+      "legal_terms": [
+        "个人信息出境",
+        "安全评估",
+        "网信部门申报",
+        "境外接收方"
+      ],
+      "linked_anchor_rule_ids": [
+        "pipl_data_export",
+        "pipl_data_export_assessment"
+      ],
+      "linked_risk_rule_ids": [
+        "risk_rule_9"
+      ],
+      "eval_case_ids": [
+        "risk_data_export_overseas_001",
+        "cross_law_export_assessment_001",
+        "pipl_data_export_conditions_001"
+      ]
+    },
+    {
+      "scenario_id": "pipl_third_party_sharing_without_consent",
+      "domain": "数据合规",
+      "description": "未充分告知或未取得明示、单独同意，即向第三方广告平台、营销公司等外部主体共享或提供个人信息。",
+      "risk_level": "high",
+      "core_articles": [
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 14
+        },
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 17
+        },
+        {
+          "source": "中华人民共和国个人信息保护法",
+          "article_no": 23
+        }
+      ],
+      "risk_types": [
+        "未履行告知义务",
+        "违规共享个人信息",
+        "违规提供个人信息",
+        "未取得同意"
+      ],
+      "required_actions": [
+        "立即停止违规共享或提供",
+        "补充告知第三方共享事项",
+        "获取用户单独同意或明示同意",
+        "面临罚款"
+      ],
+      "legal_terms": [
+        "第三方共享",
+        "个人信息提供",
+        "明示同意",
+        "单独同意",
+        "告知义务"
+      ],
+      "linked_anchor_rule_ids": [
+        "pipl_third_party_sharing",
+        "pipl_privacy_policy_sharing",
+        "pipl_third_party_marketing"
+      ],
+      "linked_risk_rule_ids": [
+        "risk_rule_15"
+      ],
+      "eval_case_ids": [
+        "risk_privacy_policy_sharing_001",
+        "risk_third_party_marketing_001"
+      ]
+    },
+    {
+      "scenario_id": "contract_unfair_standard_terms",
+      "domain": "民商事",
+      "description": "平台或经营者使用格式条款、自动续费等条款，未以显著方式提示说明，或设置不公平、无效条款。",
+      "risk_level": "high",
+      "core_articles": [
+        {
+          "source": "中华人民共和国民法典",
+          "article_no": 496
+        },
+        {
+          "source": "中华人民共和国民法典",
+          "article_no": 497
+        },
+        {
+          "source": "中华人民共和国民法典",
+          "article_no": 498
+        }
+      ],
+      "risk_types": [
+        "格式条款合规风险"
+      ],
+      "required_actions": [
+        "显著提醒用户",
+        "提供便捷取消机制",
+        "修改不公平条款"
+      ],
+      "legal_terms": [
+        "格式条款",
+        "提示说明",
+        "自动续费",
+        "不公平条款",
+        "条款效力"
+      ],
+      "linked_anchor_rule_ids": [
+        "civil_standard_form_terms"
+      ],
+      "linked_risk_rule_ids": [
+        "risk_rule_16"
+      ],
+      "eval_case_ids": [
+        "risk_contract_auto_renewal_001"
+      ]
+    },
+    {
+      "scenario_id": "antitrust_horizontal_price_fixing",
+      "domain": "市场秩序",
+      "description": "同行企业、竞争者之间通过行业会议、协议或协同行为约定统一涨价、固定或变更商品价格。",
+      "risk_level": "high",
+      "core_articles": [
+        {
+          "source": "中华人民共和国反垄断法",
+          "article_no": 3
+        },
+        {
+          "source": "中华人民共和国反垄断法",
+          "article_no": 17
+        }
+      ],
+      "risk_types": [
+        "横向垄断协议",
+        "垄断协议风险"
+      ],
+      "required_actions": [
+        "停止协同行为",
+        "立即停止固定价格或联合涨价安排",
+        "开展反垄断合规审查"
+      ],
+      "legal_terms": [
+        "垄断协议",
+        "固定价格",
+        "横向垄断协议",
+        "竞争者",
+        "协同涨价"
+      ],
+      "linked_anchor_rule_ids": [
+        "antitrust_monopoly_agreement"
+      ],
+      "linked_risk_rule_ids": [
+        "risk_rule_37"
+      ],
+      "eval_case_ids": [
+        "risk_antitrust_price_fixing_001"
+      ]
+    }
+  ]
+}

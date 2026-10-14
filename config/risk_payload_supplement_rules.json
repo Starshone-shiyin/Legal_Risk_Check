@@ -1,0 +1,792 @@
+{
+  "version": "0.4.5.13",
+  "description": "风险输出补全规则。用于在检索证据已进入上下文后，确定性补齐风险类型、整改动作、风险等级、置信度和法定结论词。",
+  "rules": [
+    {
+      "scenario_id": "trade_secret_customer_list_leak",
+      "question_all": [
+        "客户名单"
+      ],
+      "question_any": [
+        "离职",
+        "新公司",
+        "商业秘密"
+      ],
+      "risk_types": [
+        "商业秘密侵权"
+      ],
+      "exact_risk_types": [
+        "商业秘密侵权"
+      ],
+      "actions": [
+        "停止使用相关信息"
+      ],
+      "risk_level": "high",
+      "confidence_min": 0.85,
+      "answer_note": "如客户名单具备商业价值并采取了相应保密措施，离职后擅自带至新公司使用可能构成商业秘密侵权。",
+      "answer_note_unless_any": [
+        "商业秘密侵权"
+      ]
+    },
+    {
+      "question_any_groups": [
+        [
+          "虚构产品功能",
+          "虚构产品效果",
+          "虚假宣传"
+        ],
+        [
+          "广告",
+          "消费者",
+          "吸引消费者"
+        ]
+      ],
+      "risk_types": [
+        "虚假宣传"
+      ],
+      "actions": [
+        "停止虚假宣传"
+      ],
+      "risk_level": "high",
+      "confidence_min": 0.85,
+      "answer_note": "虚构产品功能或效果并误导消费者，属于虚假宣传和不正当竞争风险。",
+      "answer_note_unless_any": [
+        "误导"
+      ]
+    },
+    {
+      "question_any": [
+        "客服聊天记录",
+        "训练AI",
+        "训练模型"
+      ],
+      "risk_types": [
+        "超出原授权范围使用"
+      ],
+      "actions": [
+        "重新取得用户明确同意或对数据进行匿名化/去标识化处理"
+      ],
+      "answer_note": "该用途从客服服务转为模型训练，属于处理目的变更和超出原授权范围使用，应重新取得用户明确同意。",
+      "answer_note_unless_any": [
+        "超出原授权",
+        "目的变更"
+      ]
+    },
+    {
+      "question_any_groups": [
+        [
+          "儿童",
+          "未成年人",
+          "8-12岁"
+        ],
+        [
+          "普通用户协议",
+          "家长同意",
+          "监护人同意"
+        ]
+      ],
+      "risk_types": [
+        "儿童信息保护不力",
+        "未取得有效监护人同意"
+      ],
+      "actions": [
+        "制定专门的儿童个人信息处理规则",
+        "以合理方式核验并取得监护人同意",
+        "限制收集范围，仅收集实现功能所必需的信息",
+        "明确保存期限和删除机制"
+      ],
+      "risk_level": "high",
+      "confidence_min": 0.85,
+      "answer_note": "儿童个人信息属于敏感个人信息，处理时应制定专门规则并取得有效监护人同意，仅以普通用户协议概括同意的方式处理存在违规风险。",
+      "answer_note_unless_all": [
+        "儿童个人信息",
+        "监护人同意",
+        "违规"
+      ]
+    },
+    {
+      "scenario_id": "trade_secret_customer_list_leak",
+      "question_any": [
+        "员工私自",
+        "客户名单",
+        "导出",
+        "出售给竞争对手"
+      ],
+      "risk_types": [
+        "内部人员违规",
+        "数据泄露",
+        "管理失职"
+      ],
+      "actions": [
+        "完善访问权限、日志审计、异常导出拦截等管理和技术措施"
+      ],
+      "answer_note": "同时，应补强访问权限、日志审计、异常导出拦截等管理和技术措施。",
+      "answer_note_unless_any": [
+        "技术措施",
+        "安全措施"
+      ]
+    },
+    {
+      "question_any": [
+        "泄露",
+        "服务器被攻击",
+        "安全事件"
+      ],
+      "risk_types": [
+        "安全事件处置不当",
+        "未履行通知义务"
+      ],
+      "actions": [
+        "立即采取补救措施并通知监管部门和受影响个人"
+      ]
+    },
+    {
+      "question_any": [
+        "自动化决策",
+        "算法歧视",
+        "差异化定价",
+        "价格歧视",
+        "AI算法",
+        "筛选简历"
+      ],
+      "risk_types": [
+        "自动化决策不当",
+        "算法歧视"
+      ],
+      "actions": [
+        "优化算法规则并开展公平性审计",
+        "审查算法模型并消除偏见",
+        "提供解释说明、拒绝自动化决策或人工复核申诉渠道"
+      ],
+      "risk_level": "high",
+      "confidence_min": 0.85,
+      "answer_note": "还应向受影响个人提供解释说明，并设置拒绝自动化决策、申诉或人工复核渠道，消除算法歧视并保证公平公正。",
+      "answer_note_unless_any": [
+        "拒绝",
+        "人工复核"
+      ]
+    },
+    {
+      "question_any": [
+        "公共区域",
+        "业主共有",
+        "共有部分",
+        "物业"
+      ],
+      "risk_types": [
+        "共有财产处分风险",
+        "物业管理违规"
+      ],
+      "actions": [
+        "征得业主同意并将共有部分收益归属业主"
+      ],
+      "risk_level": "medium",
+      "risk_level_mode": "default",
+      "answer_note": "小区公共区域等共有部分的经营处分应尊重业主共同权益，收益通常应归属于业主。",
+      "answer_note_unless_all": [
+        "共有",
+        "业主"
+      ]
+    },
+    {
+      "question_all": [
+        "股东"
+      ],
+      "question_any": [
+        "财务报表",
+        "资料",
+        "知情权",
+        "查阅"
+      ],
+      "risk_types": [
+        "股东知情权侵害"
+      ],
+      "actions": [
+        "依法提供资料"
+      ],
+      "risk_level": "medium",
+      "confidence_min": 0.85,
+      "answer_note": "拒绝向股东提供依法可查阅的财务报表等资料，可能构成股东知情权侵害。",
+      "answer_note_unless_any": [
+        "股东知情权"
+      ]
+    },
+    {
+      "scenario_id": "pipl_data_export_security_assessment",
+      "question_any_groups": [
+        [
+          "出境",
+          "境外",
+          "跨境"
+        ],
+        [
+          "病历",
+          "订单数据",
+          "云服务商",
+          "境外服务器"
+        ]
+      ],
+      "actions": [
+        "开展数据出境安全评估",
+        "明确境外接收方信息"
+      ],
+      "answer_note": "个人信息出境还应向个人告知境外接收方信息、处理目的和方式，并依法取得同意或满足相应出境合规路径要求。",
+      "answer_note_unless_all": [
+        "告知",
+        "同意"
+      ]
+    },
+    {
+      "question_all": [
+        "匿名化",
+        "重新识别"
+      ],
+      "confidence_min": 0.85
+    },
+    {
+      "question_all": [
+        "税率"
+      ],
+      "question_any": [
+        "13%",
+        "9%",
+        "低税率",
+        "开具发票"
+      ],
+      "risk_types": [
+        "税率适用错误风险",
+        "少缴税款风险"
+      ],
+      "actions": [
+        "更正发票",
+        "补缴税款及滞纳金",
+        "加强税务核算管理"
+      ],
+      "confidence_min": 0.85,
+      "answer_note": "该情形属于适用税率错误，适用低于法定适用税率的税率开票可能造成少缴税款，应更正发票并补缴税款及滞纳金。",
+      "answer_note_unless_all": [
+        "适用税率错误",
+        "少缴税款"
+      ]
+    },
+    {
+      "question_any": [
+        "出口退税",
+        "虚报出口",
+        "虚报出口金额"
+      ],
+      "risk_types": [
+        "出口退税欺诈"
+      ],
+      "actions": [
+        "退还多获取税款",
+        "停止违规申报"
+      ],
+      "confidence_min": 0.85,
+      "answer_note": "虚报出口金额获取退税属于违法行为，可能构成骗取出口退税或出口退税欺诈，应停止违规申报并退还多获取税款。",
+      "answer_note_unless_all": [
+        "骗取",
+        "违法"
+      ]
+    },
+    {
+      "question_any": [
+        "混合销售",
+        "未区分收入",
+        "分别核算"
+      ],
+      "risk_types": [
+        "混合销售核算风险",
+        "税率适用错误风险"
+      ],
+      "actions": [
+        "分别核算不同业务收入",
+        "正确适用税率",
+        "完善财务核算体系"
+      ],
+      "confidence_min": 0.85,
+      "answer_note": "未区分货物销售和安装服务收入统一按低税率纳税，可能构成混合销售核算风险并导致少缴税款。",
+      "answer_note_unless_all": [
+        "混合销售",
+        "少缴税款"
+      ]
+    },
+    {
+      "question_all": [
+        "数据处理协议",
+        "数据泄露"
+      ],
+      "question_any": [
+        "责任分配",
+        "未约定责任",
+        "未约定数据泄露"
+      ],
+      "risk_types": [
+        "合同责任不明确"
+      ],
+      "actions": [
+        "补充数据安全条款",
+        "明确数据泄露责任分配"
+      ],
+      "risk_level": "high",
+      "confidence_min": 0.8,
+      "answer_note": "数据处理协议未约定数据泄露责任分配，属于合同责任不明确，应补充数据安全条款、明确泄露通知、补救措施、违约责任和赔偿机制。",
+      "answer_note_unless_any": [
+        "合同责任不明确"
+      ]
+    },
+    {
+      "scenario_id": "pipl_third_party_sharing_without_consent",
+      "question_any_groups": [
+        [
+          "向营销公司提供手机号",
+          "营销公司",
+          "第三方"
+        ],
+        [
+          "手机号",
+          "明示同意"
+        ]
+      ],
+      "risk_types": [
+        "违规提供个人信息",
+        "未取得同意"
+      ],
+      "actions": [
+        "立即停止提供",
+        "获取用户明示同意",
+        "面临罚款"
+      ],
+      "risk_level": "high",
+      "confidence_min": 0.85,
+      "answer_note": "未经明示同意向第三方提供手机号用于营销属于违法提供个人信息，可能面临行政处罚或罚款。",
+      "answer_note_unless_any": [
+        "行政处罚"
+      ]
+    },
+    {
+      "scenario_id": "contract_unfair_standard_terms",
+      "question_any": [
+        "格式条款",
+        "自动续费"
+      ],
+      "risk_types": [
+        "格式条款合规风险"
+      ],
+      "actions": [
+        "显著提醒用户"
+      ],
+      "risk_level": "high",
+      "confidence_min": 0.85,
+      "answer_note": "自动续费条款属于需要以显著方式提示说明的格式条款。",
+      "answer_note_unless_any": [
+        "提示说明"
+      ]
+    },
+    {
+      "question_any": [
+        "劳务派遣",
+        "派遣"
+      ],
+      "risk_types": [
+        "用工合规风险"
+      ],
+      "actions": [
+        "调整用工结构"
+      ],
+      "risk_level": "high",
+      "confidence_min": 0.85,
+      "answer_note": "长期使用派遣安排规避用工义务，可能违反诚实信用原则，应调整用工结构。",
+      "answer_note_unless_all": [
+        "诚实信用",
+        "规避"
+      ]
+    },
+    {
+      "question_any": [
+        "缺陷产品",
+        "产品责任",
+        "消费者受伤"
+      ],
+      "risk_types": [
+        "产品侵权责任"
+      ],
+      "actions": [
+        "先行赔付"
+      ],
+      "risk_level": "high",
+      "confidence_min": 0.85,
+      "answer_note": "平台销售缺陷产品造成损害的，可能承担产品责任并应先行赔偿消费者。",
+      "answer_note_unless_all": [
+        "产品责任",
+        "平台"
+      ]
+    },
+    {
+      "question_all": [
+        "商标"
+      ],
+      "question_any": [
+        "未经许可",
+        "高度相似",
+        "近似"
+      ],
+      "risk_types": [
+        "商标侵权"
+      ],
+      "actions": [
+        "停止使用"
+      ],
+      "risk_level": "high",
+      "confidence_min": 0.85,
+      "answer_note": "未经许可使用与他人注册商标近似且可能造成混淆的标识，属于商标侵权风险。",
+      "answer_note_unless_any": [
+        "未经许可"
+      ]
+    },
+    {
+      "question_all": [
+        "通用名称",
+        "商标"
+      ],
+      "risk_types": [
+        "商标无效风险"
+      ],
+      "actions": [
+        "重新设计标识"
+      ],
+      "risk_level": "medium",
+      "risk_level_mode": "default"
+    },
+    {
+      "question_any": [
+        "三年不使用",
+        "连续三年不使用",
+        "连续三年未实际使用"
+      ],
+      "risk_types": [
+        "商标撤销风险"
+      ],
+      "exact_risk_types": [
+        "商标撤销风险"
+      ],
+      "actions": [
+        "保留使用证据"
+      ],
+      "risk_level": "medium",
+      "risk_level_mode": "default",
+      "confidence_min": 0.85,
+      "answer_note": "注册商标无正当理由连续三年不使用的，存在被撤销风险；企业应保留使用证据。",
+      "answer_note_unless_all": [
+        "连续三年",
+        "撤销风险"
+      ]
+    },
+    {
+      "question_all": [
+        "专利"
+      ],
+      "question_any": [
+        "未经许可",
+        "未取得专利许可",
+        "生产销售"
+      ],
+      "risk_types": [
+        "专利侵权"
+      ],
+      "actions": [
+        "停止生产销售"
+      ],
+      "risk_level": "high",
+      "answer_note": "未经许可生产销售他人专利产品，可能构成专利侵权。",
+      "answer_note_unless_any": [
+        "未经许可"
+      ]
+    },
+    {
+      "question_any_groups": [
+        [
+          "职务发明",
+          "职务行为",
+          "履行职务"
+        ],
+        [
+          "技术成果",
+          "发明",
+          "专利权"
+        ]
+      ],
+      "risk_types": [
+        "职务发明归属"
+      ],
+      "actions": [
+        "明确职务发明制度"
+      ],
+      "risk_level": "medium",
+      "risk_level_mode": "upgrade_if_low"
+    },
+    {
+      "question_any": [
+        "职务发明",
+        "职务行为"
+      ],
+      "risk_types": [
+        "职务发明归属"
+      ],
+      "actions": [
+        "明确职务发明制度"
+      ],
+      "risk_level": "medium",
+      "risk_level_mode": "upgrade_if_low"
+    },
+    {
+      "question_all": [
+        "专利"
+      ],
+      "question_any": [
+        "无效宣告",
+        "新颖性",
+        "申请日前已公开"
+      ],
+      "risk_types": [
+        "专利有效性风险"
+      ],
+      "actions": [
+        "评估专利稳定性"
+      ],
+      "risk_level": "high"
+    },
+    {
+      "question_all": [
+        "出资"
+      ],
+      "question_any": [
+        "未按",
+        "未实际",
+        "认缴"
+      ],
+      "risk_types": [
+        "出资违约"
+      ],
+      "actions": [
+        "补缴出资",
+        "追究违约责任"
+      ],
+      "risk_level": "high"
+    },
+    {
+      "question_all": [
+        "未弥补亏损",
+        "分配利润"
+      ],
+      "risk_types": [
+        "违法利润分配"
+      ],
+      "actions": [
+        "停止违规分红"
+      ],
+      "risk_level": "high"
+    },
+    {
+      "question_all": [
+        "董事"
+      ],
+      "question_any_groups": [
+        [
+          "关联交易",
+          "交易"
+        ],
+        [
+          "未经批准",
+          "获利",
+          "从中获利"
+        ]
+      ],
+      "risk_types": [
+        "关联交易违规"
+      ],
+      "actions": [
+        "完善关联交易审批"
+      ],
+      "risk_level": "high"
+    },
+    {
+      "question_all": [
+        "董事",
+        "关联交易"
+      ],
+      "risk_types": [
+        "关联交易违规"
+      ],
+      "actions": [
+        "完善关联交易审批"
+      ],
+      "risk_level": "high"
+    },
+    {
+      "question_all": [
+        "股权",
+        "转让"
+      ],
+      "risk_types": [
+        "股权转让违规"
+      ],
+      "actions": [
+        "履行通知义务"
+      ],
+      "risk_level": "medium",
+      "risk_level_mode": "default"
+    },
+    {
+      "question_any": [
+        "法人独立地位",
+        "逃避债务"
+      ],
+      "risk_types": [
+        "公司人格滥用"
+      ],
+      "actions": [
+        "规范财务独立"
+      ],
+      "risk_level": "high",
+      "answer_note": "该类滥用公司法人独立地位逃避债务的情形，属于法人人格否认规则的典型适用场景。",
+      "answer_note_unless_any": [
+        "法人人格否认"
+      ]
+    },
+    {
+      "question_all": [
+        "经营者集中",
+        "未"
+      ],
+      "risk_types": [
+        "经营者集中申报违规"
+      ],
+      "actions": [
+        "补充申报"
+      ],
+      "risk_level": "high"
+    },
+    {
+      "question_all": [
+        "虚开发票"
+      ],
+      "risk_types": [
+        "虚开发票风险",
+        "进项抵扣违规风险"
+      ],
+      "actions": [
+        "停止违规抵扣",
+        "补缴税款及滞纳金",
+        "建立发票合规审核机制"
+      ],
+      "risk_level": "high",
+      "answer_note": "通过虚开发票抵扣进项税额属于违法行为，可能引发行政处罚或刑事责任。",
+      "answer_note_unless_any": [
+        "违法行为"
+      ]
+    },
+    {
+      "question_all": [
+        "虚开发票"
+      ],
+      "answer_note": "情节严重的，还可能涉及刑事责任。",
+      "answer_note_unless_any": [
+        "刑事责任"
+      ]
+    },
+    {
+      "question_any": [
+        "未申报纳税",
+        "未申报",
+        "未开具发票"
+      ],
+      "question_all": [
+        "收入"
+      ],
+      "actions": [
+        "补申报纳税"
+      ],
+      "risk_level": "high",
+      "confidence_min": 0.85,
+      "answer_note": "未申报纳税和未依法开具发票还可能受到税务行政处罚。",
+      "answer_note_unless_any": [
+        "处罚"
+      ]
+    },
+    {
+      "question_all": [
+        "餐饮"
+      ],
+      "question_any": [
+        "进项税额",
+        "抵扣"
+      ],
+      "risk_types": [
+        "进项抵扣范围风险",
+        "费用抵扣合规风险"
+      ],
+      "actions": [
+        "规范费用报销类型",
+        "区分可抵扣与不可抵扣项目",
+        "完善财务审核流程"
+      ],
+      "risk_level": "medium",
+      "risk_level_mode": "upgrade_if_low",
+      "answer_note": "餐饮服务等非生产经营或个人消费性质支出对应的进项税额，通常不得抵扣。",
+      "answer_note_unless_any": [
+        "非生产经营"
+      ]
+    },
+    {
+      "scenario_id": "antitrust_horizontal_price_fixing",
+      "question_any_groups": [
+        [
+          "统一提高产品价格",
+          "统一价格",
+          "联合涨价",
+          "固定价格"
+        ],
+        [
+          "同行",
+          "竞争",
+          "行业会议",
+          "约定"
+        ]
+      ],
+      "risk_types": [
+        "横向垄断协议"
+      ],
+      "actions": [
+        "停止协同行为"
+      ],
+      "risk_level": "high",
+      "confidence_min": 0.85,
+      "answer_note": "该协同定价行为属于违法的横向垄断协议，核心表现是固定价格。",
+      "answer_note_unless_all": [
+        "违法",
+        "固定价格"
+      ]
+    },
+    {
+      "question_any_groups": [
+        [
+          "独立制定产品价格",
+          "独立定价",
+          "自主定价"
+        ],
+        [
+          "未与竞争对手协商",
+          "根据自身成本"
+        ]
+      ],
+      "risk_level": "low",
+      "confidence_min": 0.85,
+      "answer_note": "未与竞争对手协商的独立定价通常属于低风险合规场景。",
+      "answer_note_unless_all": [
+        "独立",
+        "定价"
+      ]
+    }
+  ]
+}

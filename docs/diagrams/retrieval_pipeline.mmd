@@ -1,0 +1,14 @@
+flowchart LR
+    Q0[问题] --> A[问题分析与领域路由]
+    A --> D[Dense top-k]
+    A --> B[BM25 top-k]
+    D --> U[候选 union]
+    B --> U
+    A --> C[法律概念扩展]
+    C --> CA[概念直接法源锚点]
+    A --> SA[场景/领域/标准锚点]
+    CA --> X[候选裁剪与多样性约束]
+    SA --> X
+    U --> X
+    X --> RR[Cross-Encoder 重排]
+    RR --> EC[证据链]

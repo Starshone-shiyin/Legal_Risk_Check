@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "source": "中华人民共和国民法典",
+  "source_file": "src/knowledge/civil_law/中华人民共和国民法典.txt",
+  "effective_date": "2021-01-01",
+  "article_range": [1, 1260],
+  "coverage_standard": "法源全文连续、七编均有代表性直接锚点、常见基础概念均可直连条文。该清单不把每一条都转换为关键词规则。",
+  "books": [
+    {"book": "第一编 总则", "range": [1, 204], "anchors": [2, 4, 7, 13, 18, 27, 34, 40, 46, 57, 102, 110, 133, 143, 161, 171, 172, 179, 188], "concept_ids": ["civil_subject", "legal_person", "unincorporated_organization", "civil_rights_capacity", "civil_act_capacity", "guardianship", "declaration_missing_death", "civil_rights_general", "civil_legal_act", "declaration_of_intent", "valid_civil_legal_act", "invalid_civil_legal_act", "voidable_civil_legal_act", "conditional_civil_legal_act", "agency", "unauthorized_agency", "apparent_agency", "civil_liability", "limitation_of_action", "force_majeure"]},
+    {"book": "第二编 物权", "range": [205, 462], "anchors": [205, 209, 224, 240, 271, 288, 297, 311, 330, 344, 366, 372, 394, 425, 447], "concept_ids": ["property_rights", "property_right_change", "ownership", "neighboring_relations", "co_ownership", "good_faith_acquisition", "land_contract_management_right", "construction_land_use_right", "residence_right", "easement", "mortgage", "pledge", "lien"]},
+    {"book": "第三编 合同", "range": [463, 988], "anchors": [465, 472, 479, 483, 496, 500, 509, 535, 543, 557, 563, 577, 595, 657, 667, 681, 703, 788, 843, 937, 979, 985], "concept_ids": ["contract_binding_force", "offer", "acceptance", "contract_formation", "standard_terms", "culpa_in_contrahendo", "contract_incidental_duty", "contract_preservation", "contract_change_transfer", "contract_termination", "breach_of_contract", "sale_contract", "gift_with_obligation", "loan_contract", "suretyship_contract", "lease_contract", "construction_contract", "technology_contract", "property_service_contract", "management_without_cause", "unjust_enrichment"]},
+    {"book": "第四编 人格权", "range": [989, 1039], "anchors": [990, 995, 1002, 1012, 1018, 1024, 1030, 1032, 1034], "concept_ids": ["personality_rights_remedies", "life_body_health_rights", "name_right", "portrait_right", "reputation_right", "privacy_right", "criminal_record_privacy", "civil_personal_information_rights"]},
+    {"book": "第五编 婚姻家庭", "range": [1040, 1118], "anchors": [1041, 1046, 1047, 1049, 1062, 1064, 1076, 1079, 1084, 1093, 1105], "concept_ids": ["marriage_conditions", "marital_property", "divorce", "adoption"]},
+    {"book": "第六编 继承", "range": [1119, 1163], "anchors": [1120, 1122, 1127, 1128, 1133, 1145], "concept_ids": ["inheritance", "statutory_inheritance", "will_inheritance", "estate_administrator"]},
+    {"book": "第七编 侵权责任", "range": [1164, 1260], "anchors": [1165, 1166, 1177, 1179, 1183, 1195, 1202, 1208, 1218, 1229, 1236, 1245, 1254], "concept_ids": ["tort_liability", "tort_defenses", "tort_damages", "network_tort", "product_liability", "motor_vehicle_tort", "medical_damage", "environmental_tort", "high_altitude_throwing"]}
+  ]
+}

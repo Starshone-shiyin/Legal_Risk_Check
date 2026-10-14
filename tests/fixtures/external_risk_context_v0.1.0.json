@@ -1,0 +1,165 @@
+{
+  "version": "0.1.0",
+  "scope": "fixture external risk context for market, commodity futures, supply-chain, and tech-company risk infrastructure",
+  "guardrails": {
+    "rag_query": "not_called",
+    "qdrant_access": "not_called",
+    "llm_access": "not_called",
+    "market_data_access": "fixture_only",
+    "commodity_data_access": "fixture_only",
+    "supply_chain_data_access": "fixture_only"
+  },
+  "context": {
+    "as_of": "2026-06-24T15:30:00+08:00",
+    "company": {
+      "company_id": "demo-semiconductor-equipment",
+      "name": "示例半导体设备企业",
+      "tech_sector": "semiconductor_equipment",
+      "lifecycle_stage": "growth",
+      "listed_board": "STAR",
+      "financing_stage": "post-ipo",
+      "core_products": ["刻蚀设备", "薄膜沉积设备", "工艺控制软件"],
+      "key_materials": ["copper", "industrial_silicon", "rare_earth"],
+      "key_regions": ["Yangtze River Delta", "South China"],
+      "sensitive_domains": ["supply_chain", "export_control", "ip", "disclosure"]
+    },
+    "signals": [
+      {
+        "signal_id": "market-semiconductor-drawdown-001",
+        "signal_type": "market",
+        "title": "半导体设备板块短期回撤",
+        "severity": "medium",
+        "direction": "negative",
+        "as_of": "2026-06-24T15:00:00+08:00",
+        "entity": "semiconductor_equipment_index",
+        "metric": "10d_return",
+        "value": -0.076,
+        "threshold": -0.05,
+        "affected_domains": ["market", "disclosure"],
+        "affected_supply_links": ["customer_demand", "financing_window"],
+        "evidence": "半导体设备相关指数近 10 个交易日回撤 7.6%，超过观察阈值 5%。",
+        "source": "fixture.market.index",
+        "confidence": 0.74,
+        "metadata": {"lookback_days": 10}
+      },
+      {
+        "signal_id": "commodity-copper-cost-001",
+        "signal_type": "commodity_futures",
+        "title": "铜价上涨带来设备材料成本压力",
+        "severity": "high",
+        "direction": "negative",
+        "as_of": "2026-06-24T15:00:00+08:00",
+        "entity": "copper_main_contract",
+        "metric": "5d_return",
+        "value": 0.064,
+        "threshold": 0.05,
+        "affected_domains": ["supply_chain", "contract", "disclosure"],
+        "affected_supply_links": ["raw_materials", "motors", "cables", "precision_components"],
+        "evidence": "铜主力合约近 5 个交易日上涨 6.4%，可能推高电机、线缆和精密部件成本。",
+        "source": "fixture.commodity.futures",
+        "confidence": 0.82,
+        "metadata": {"commodity_group": "copper", "contracts": ["CU_MAIN"]}
+      },
+      {
+        "signal_id": "supply-region-concentration-001",
+        "signal_type": "supply_chain",
+        "title": "关键零部件供应商区域集中",
+        "severity": "medium",
+        "direction": "negative",
+        "as_of": "2026-06-24T12:00:00+08:00",
+        "entity": "critical_component_suppliers",
+        "metric": "top_region_supplier_share",
+        "value": 0.68,
+        "threshold": 0.5,
+        "affected_domains": ["supply_chain", "contract"],
+        "affected_supply_links": ["precision_components", "after_sales_parts"],
+        "evidence": "核心零部件供应商 68% 集中在单一区域，替代供应商储备不足。",
+        "source": "fixture.supply_chain.profile",
+        "confidence": 0.7,
+        "metadata": {"top_region": "South China"}
+      },
+      {
+        "signal_id": "policy-export-control-001",
+        "signal_type": "policy",
+        "title": "高端半导体设备出口管制关注度上升",
+        "severity": "high",
+        "direction": "negative",
+        "as_of": "2026-06-24T09:00:00+08:00",
+        "entity": "semiconductor_equipment_export",
+        "metric": "policy_attention",
+        "value": "elevated",
+        "threshold": "watch",
+        "affected_domains": ["export_control", "contract", "disclosure"],
+        "affected_supply_links": ["overseas_customers", "dual_use_components"],
+        "evidence": "近期高端半导体设备、两用物项和境外客户筛查相关监管关注度上升。",
+        "source": "fixture.policy.watchlist",
+        "confidence": 0.68,
+        "metadata": {"jurisdiction": "CN"}
+      }
+    ],
+    "findings": [
+      {
+        "finding_id": "finding-cost-contract-disclosure-001",
+        "title": "原材料上涨可能放大固定价格合同和毛利披露风险",
+        "severity": "high",
+        "risk_domain": "contract",
+        "summary": "铜价上涨叠加半导体设备长交付周期，可能影响固定价格销售合同、采购锁价安排和毛利率稳定性。",
+        "triggering_signal_ids": ["commodity-copper-cost-001", "market-semiconductor-drawdown-001"],
+        "legal_query_seeds": [
+          "原材料价格大幅波动时固定价格销售合同如何设置调价条款",
+          "上市公司原材料成本波动对毛利率和经营风险的信息披露要求",
+          "情势变更规则在长期设备销售合同中的适用边界"
+        ],
+        "recommended_actions": [
+          "复核重大销售合同中的调价、不可抗力和情势变更条款。",
+          "梳理铜、稀土、工业硅等关键原材料的采购锁价和替代供应安排。",
+          "在融资、公告或尽调材料中单独披露原材料价格敏感性。"
+        ],
+        "requires_human_review": true
+      },
+      {
+        "finding_id": "finding-export-control-001",
+        "title": "境外客户和高端设备交付可能触发出口管制复核",
+        "severity": "high",
+        "risk_domain": "export_control",
+        "summary": "高端半导体设备和两用部件相关政策关注度上升，境外销售、维修、软件升级和技术支持均需纳入合规筛查。",
+        "triggering_signal_ids": ["policy-export-control-001"],
+        "legal_query_seeds": [
+          "出口管制法下两用物项出口合规审查要求",
+          "高端设备向境外客户提供软件升级和技术支持的出口管制风险",
+          "出口受限导致合同无法履行时的违约责任和通知义务"
+        ],
+        "recommended_actions": [
+          "建立境外客户、最终用户和最终用途筛查清单。",
+          "复核销售、售后和软件授权合同中的出口管制承诺条款。",
+          "对重点订单设置法务、合规和业务联合审批。"
+        ],
+        "requires_human_review": true
+      },
+      {
+        "finding_id": "finding-supplier-concentration-001",
+        "title": "供应商区域集中增加供应链连续性和合同履约风险",
+        "severity": "medium",
+        "risk_domain": "supply_chain",
+        "summary": "关键零部件供应商集中在单一区域，若叠加物流、限电、环保或贸易限制事件，可能影响交付周期和违约责任。",
+        "triggering_signal_ids": ["supply-region-concentration-001"],
+        "legal_query_seeds": [
+          "关键供应商断供时采购合同和销售合同中的违约责任如何衔接",
+          "供应链中断是否构成不可抗力或情势变更",
+          "科创企业供应商集中度在融资尽调和信息披露中的风险提示"
+        ],
+        "recommended_actions": [
+          "建立关键零部件 B 角供应商清单。",
+          "复核采购合同中的交付、质量、替代采购和赔偿条款。",
+          "将供应商集中度纳入董事会或经营层风险台账。"
+        ],
+        "requires_human_review": true
+      }
+    ],
+    "legal_fusion_hints": [
+      "外部行情和商品期货信号仅作为经营事实背景，不作为法律依据。",
+      "生成法律报告时应将 triggering_signal_ids 对应事实转化为检索问题，再由法律知识库提供法规依据。",
+      "高风险结论需要同时保留事实快照时间、信号来源、法律依据和人工复核状态。"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "scopes": {
+    "demo-ai-enterprise": {
+      "company_id": "demo-ai-enterprise",
+      "name": "半导体产业链调试主体",
+      "profile_version": "1",
+      "industry_package": "semiconductor",
+      "updated_at": "2026-08-02T00:00:00Z",
+      "objects": [
+        {"object_id": "supplier-smic", "object_type": "supplier", "name": "中芯国际", "aliases": ["SMIC"], "external_tags": ["supply_chain", "export_control"], "security_codes": ["sh688981"], "regions": ["上海"], "supplier_id": "debug-smic-688981", "project_id": "project-semiconductor-chain", "lifecycle_state_ids": ["state-semiconductor-operation"], "active": true}
+      ],
+      "lifecycle_states": [
+        {"state_id": "state-semiconductor-operation", "scope_id": "project-semiconductor-chain", "scope_type": "project", "business_stage": "operation", "control_stage": "cross_border", "status": "active", "effective_from": "2026-08-02T00:00:00Z", "owner": "供应链风控负责人", "basis": "开发者调试基线"}
+      ],
+      "lifecycle_state_history": []
+    }
+  },
+  "cases": [],
+  "sync_batches": []
+}

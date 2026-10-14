@@ -1,0 +1,236 @@
+{
+  "version": "0.4.18.3",
+  "scope": "offline product view models for enterprise legal risk platform",
+  "guardrails": {
+    "ui_implementation": "not_started",
+    "api_integration": "not_started",
+    "rag_query": "not_called",
+    "qdrant_access": "not_called",
+    "llm_access": "not_called",
+    "market_data_access": "not_called",
+    "map_data_access": "not_called"
+  },
+  "shared_enums": {
+    "risk_levels": ["low", "medium", "high", "critical"],
+    "review_statuses": ["not_required", "recommended", "required", "completed"],
+    "source_modules": ["dashboard", "legal_workspace", "market_signals", "supply_chain_map", "lifecycle_risk"]
+  },
+  "product_risks": [
+    {
+      "risk_id": "risk-data-export-001",
+      "title": "个人信息出境合规风险",
+      "risk_level": "high",
+      "domain": "data_compliance",
+      "summary": "企业存在向境外服务商传输客户个人信息的安排，需要核查评估、告知、合同和安全措施。",
+      "source_modules": ["dashboard", "legal_workspace", "supply_chain_map", "lifecycle_risk"],
+      "review_status": "required"
+    },
+    {
+      "risk_id": "risk-supply-geopolitics-001",
+      "title": "关键零部件供应链地缘风险",
+      "risk_level": "medium",
+      "domain": "supply_chain",
+      "summary": "境外供应节点存在政策、物流和贸易限制不确定性，需要关注替代供应和合同履约安排。",
+      "source_modules": ["dashboard", "market_signals", "supply_chain_map"],
+      "review_status": "recommended"
+    },
+    {
+      "risk_id": "risk-competition-001",
+      "title": "市场竞争与宣传合规风险",
+      "risk_level": "medium",
+      "domain": "market_regulation",
+      "summary": "营销文案和渠道合作可能触发虚假宣传、混淆或不正当竞争审查。",
+      "source_modules": ["dashboard", "legal_workspace", "lifecycle_risk"],
+      "review_status": "recommended"
+    }
+  ],
+  "view_models": {
+    "dashboard_summary": {
+      "company_id": "demo-company",
+      "as_of": "2026-06-15T09:00:00+08:00",
+      "overall_risk": {
+        "score": 78,
+        "level": "high",
+        "trend": "up",
+        "summary": "外部供应链不确定性和数据出境合规事项推高综合风险。"
+      },
+      "key_metrics": [
+        {"metric_id": "open-high-risk", "label": "高风险事项", "value": 2, "unit": "items"},
+        {"metric_id": "pending-review", "label": "待人工复核", "value": 3, "unit": "items"},
+        {"metric_id": "recent-reports", "label": "近 30 日报告", "value": 5, "unit": "reports"}
+      ],
+      "risk_cards": [
+        {"risk_id": "risk-data-export-001", "display_order": 1, "primary_action": "查看证据链"},
+        {"risk_id": "risk-supply-geopolitics-001", "display_order": 2, "primary_action": "查看供应链节点"},
+        {"risk_id": "risk-competition-001", "display_order": 3, "primary_action": "生成整改清单"}
+      ],
+      "alerts": [
+        {
+          "alert_id": "alert-001",
+          "risk_id": "risk-data-export-001",
+          "severity": "high",
+          "title": "数据出境材料缺口",
+          "message": "缺少个人信息出境影响评估和境外接收方安全义务说明。"
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task-001",
+          "risk_id": "risk-data-export-001",
+          "title": "补齐出境评估材料",
+          "owner_role": "法务/合规",
+          "due_date": "2026-06-30",
+          "status": "open"
+        }
+      ],
+      "recent_reports": [
+        {
+          "report_id": "report-001",
+          "title": "客户数据出境风险摘要",
+          "risk_ids": ["risk-data-export-001"],
+          "generated_at": "2026-06-15T08:30:00+08:00",
+          "format": "markdown"
+        }
+      ],
+      "data_sources": [
+        {"source_id": "legal-knowledge", "label": "法律知识库", "status": "ready"},
+        {"source_id": "market-signals", "label": "市场与外部风险", "status": "mock"},
+        {"source_id": "supply-chain", "label": "供应链数据", "status": "mock"}
+      ]
+    },
+    "legal_workspace": {
+      "workspace_id": "legal-demo-workspace",
+      "active_thread_id": "thread-demo-001",
+      "supported_upload_types": ["pdf", "docx", "txt", "md"],
+      "threads": [
+        {
+          "thread_id": "thread-demo-001",
+          "title": "客户数据出境合规咨询",
+          "risk_ids": ["risk-data-export-001"],
+          "updated_at": "2026-06-15T08:30:00+08:00"
+        }
+      ],
+      "active_answer": {
+        "question": "企业把客户数据传输给境外云服务商，需要关注哪些法律风险？",
+        "answer": "需要重点核查个人信息出境路径、告知同意或其他合法性基础、标准合同或安全评估触发条件，以及境外接收方安全保障义务。",
+        "confidence_score": 0.86,
+        "risk_ids": ["risk-data-export-001"],
+        "needs_human_review": true
+      },
+      "evidence_chain": [
+        {
+          "evidence_id": "ev-pipl-38",
+          "risk_id": "risk-data-export-001",
+          "law_name": "中华人民共和国个人信息保护法",
+          "article": "第三十八条",
+          "jurisdiction": "CN",
+          "legal_functional_type": "义务条款",
+          "excerpt": "个人信息处理者向境外提供个人信息，应当具备法定条件之一。"
+        }
+      ],
+      "report_actions": [
+        {
+          "action_id": "export-risk-report",
+          "label": "生成风险报告",
+          "output_formats": ["markdown", "json"],
+          "requires_human_review": false
+        }
+      ]
+    },
+    "market_signals": {
+      "as_of": "2026-06-15T09:00:00+08:00",
+      "signals": [
+        {
+          "signal_id": "signal-commodity-001",
+          "title": "关键原材料价格波动",
+          "source_type": "market",
+          "severity": "medium",
+          "affected_domains": ["supply_chain", "contract"],
+          "risk_ids": ["risk-supply-geopolitics-001"],
+          "direction": "negative",
+          "summary": "关键原材料波动可能影响供应商履约能力和采购成本。"
+        },
+        {
+          "signal_id": "signal-regulatory-001",
+          "title": "数据跨境监管关注度提升",
+          "source_type": "regulatory",
+          "severity": "high",
+          "affected_domains": ["data_compliance"],
+          "risk_ids": ["risk-data-export-001"],
+          "direction": "negative",
+          "summary": "建议优先复核个人信息出境材料和境外接收方义务。"
+        }
+      ]
+    },
+    "supply_chain_map": {
+      "map_mode": "world",
+      "nodes": [
+        {
+          "node_id": "supplier-sg-001",
+          "label": "境外云服务商",
+          "node_type": "supplier",
+          "location": {"country": "Singapore", "region": "APAC", "lat": 1.3521, "lng": 103.8198},
+          "risk_level": "high",
+          "risk_ids": ["risk-data-export-001"]
+        },
+        {
+          "node_id": "factory-cn-001",
+          "label": "华东生产基地",
+          "node_type": "factory",
+          "location": {"country": "China", "province": "Jiangsu", "lat": 31.2304, "lng": 121.4737},
+          "risk_level": "medium",
+          "risk_ids": ["risk-supply-geopolitics-001"]
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "edge-001",
+          "source_node_id": "factory-cn-001",
+          "target_node_id": "supplier-sg-001",
+          "relationship": "cloud_service_and_data_transfer",
+          "risk_ids": ["risk-data-export-001"]
+        }
+      ],
+      "region_overlays": [
+        {
+          "region_id": "region-apac",
+          "label": "亚太区域",
+          "risk_level": "medium",
+          "risk_ids": ["risk-supply-geopolitics-001"]
+        }
+      ]
+    },
+    "lifecycle_risk": {
+      "company_id": "demo-company",
+      "stages": [
+        {
+          "stage_id": "stage-incorporation",
+          "label": "设立与股权结构",
+          "phase_order": 1,
+          "risk_level": "low",
+          "risk_ids": [],
+          "evidence_refs": [],
+          "recommended_actions": ["定期复核章程和股东出资安排。"]
+        },
+        {
+          "stage_id": "stage-data-compliance",
+          "label": "数据合规",
+          "phase_order": 5,
+          "risk_level": "high",
+          "risk_ids": ["risk-data-export-001"],
+          "evidence_refs": ["ev-pipl-38"],
+          "recommended_actions": ["补充出境评估材料。", "复核境外接收方安全保障义务。"]
+        },
+        {
+          "stage_id": "stage-market-competition",
+          "label": "市场竞争",
+          "phase_order": 8,
+          "risk_level": "medium",
+          "risk_ids": ["risk-competition-001"],
+          "evidence_refs": [],
+          "recommended_actions": ["复核营销文案和渠道合作条款。"]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,68 @@
+# 虚拟环境
+venv/
+env/
+.venv/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# 环境变量（含 API Key）
+.env
+
+# IDE 配置（可选，如果多人协作建议忽略）
+.vscode/
+.idea/
+
+# 日志与临时文件
+*.log
+*.tmp
+*.bak
+tmp*/
+output/
+.playwright-cli/
+backup/
+item-report/
+reports/core_tech/
+data/external_risk/intelligence_feed_cache.json
+tests/complex_case_eval_report.json
+tests/rag_ablation_judge_report.json
+tests/rag_ablation_no_proxy_judge_report.json
+tests/rag_ablation_report.json
+tests/rag_ablation_report_no_proxy.json
+tests/rag_smoke_after_ablation.json
+data/document_ingest/
+data/user_skills.json
+
+# Electron desktop packaging
+desktop/node_modules/
+desktop/dist/
+desktop/runtime-build/
+desktop/runtime/backend/*
+!desktop/runtime/backend/README.md
+desktop/runtime/qdrant/*
+!desktop/runtime/qdrant/README.md
+desktop/runtime/qdrant/storage-seed/
+desktop/runtime/data-seed/*
+!desktop/runtime/data-seed/README.md
+desktop/runtime/user-data/
+
+# 系统文件
+Thumbs.db
+.DS_Store
+
+# Local secrets, tooling and generated review artifacts
+.env.*
+!.env.example
+.claude/
+.agents/
+.codex_review/
+.review_tmp/
+*.pem
+*.key
+*_qa/
+*_render*/
+reports/*
+!reports/README.md
+tests/*_report*.json

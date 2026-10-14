@@ -1,0 +1,43 @@
+flowchart TD
+    U["用户问题 / 上传材料"] --> B["输入边界与意图识别"]
+    B --> Q["查询规范化\n概念识别、时效性信号、多问题识别"]
+    B --> M["用户材料解析与临时隔离\n不写入法律法源库"]
+
+    Q --> D["Dense 向量召回\nQdrant"]
+    Q --> S["BM25 稀疏召回"]
+    Q --> X["法律概念扩展\n术语、别称、关联概念"]
+    X --> D
+    X --> S
+    D --> C["候选并集与去重"]
+    S --> C
+    C --> A["场景锚点与候选裁剪\n可审计规则增强"]
+    A --> R["Cross-Encoder 重排序\n条件触发"]
+    R --> E["本地证据集\n法规名称、条号、片段、元数据"]
+    M --> E
+
+    E --> G["ESG 证据充分性门控\nC: 覆盖度  Q: 引用比率\nA: 权威占比  D: 来源多样性\nL: 本地一级法源"]
+    G --> H{"证据是否充分？"}
+    H -->|"是"| P["受证据约束生成\n结论、法源、建议、缺口"]
+    H -->|"法律问题缺少本地一级法源"| W["受控联网检索计划"]
+    H -->|"其他关键缺口"| HR["提示人工复核\n说明缺失证据"]
+
+    Q --> T{"按需联网触发？\n显式请求 / 实时事实 / 关键缺口"}
+    T -->|"是"| W
+    T -->|"否"| G
+    W --> F["来源限制与提供方检索\n法律/监管优先官方域名"]
+    F --> WE["网页证据\nURL、采集时间、可信等级\nweb_result / 需人工复核"]
+    WE --> SEP["证据分层与重评估\n网页事实不替代本地法源"]
+    SEP --> G
+
+    P --> V["引用完整性与证据边界校验"]
+    V --> O["前端呈现\nMarkdown 回答、法源证据、网页证据、ESG 与复核提示"]
+    HR --> O
+
+    classDef local fill:#E8F1FB,stroke:#2F6DB2,color:#172B4D
+    classDef control fill:#FFF3D6,stroke:#B87800,color:#5C3A00
+    classDef web fill:#E8F7EE,stroke:#27865A,color:#174A31
+    classDef review fill:#FBEAEA,stroke:#B43B3B,color:#6A1C1C
+    class D,S,X,C,A,R,E,M local
+    class G,H,T,V control
+    class W,F,WE,SEP web
+    class HR review

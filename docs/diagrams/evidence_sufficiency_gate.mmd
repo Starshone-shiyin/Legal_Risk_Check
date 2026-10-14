@@ -1,0 +1,16 @@
+flowchart LR
+    A["Selected evidence"] --> B["Coverage C"]
+    A --> C["Citation ratio Q"]
+    A --> D["Authority ratio A"]
+    A --> E["Source diversity D"]
+    A --> F["Local primary-law gate L"]
+    B --> G["ESG score"]
+    C --> G
+    D --> G
+    E --> G
+    F --> G
+    G --> H{"Sufficient?"}
+    H -->|"yes"| I["Answer with evidence"]
+    H -->|"legal source gap"| J["Controlled web supplement"]
+    H -->|"other gap"| K["Human review"]
+    J --> L["Regenerate once with separated web evidence"]

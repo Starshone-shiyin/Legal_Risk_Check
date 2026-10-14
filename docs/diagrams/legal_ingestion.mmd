@@ -1,0 +1,11 @@
+flowchart LR
+    S[法律法规 TXT/Markdown] --> P[解析与清洗]
+    P --> C[条文/段落切分]
+    C --> M[元数据
+法名、条号、层级、效力]
+    M --> D[Dense embedding]
+    M --> B[BM25 编码]
+    D --> Q[Qdrant dense index]
+    B --> Q2[Qdrant sparse index]
+    Q --> R[可追溯检索]
+    Q2 --> R

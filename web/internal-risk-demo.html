@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>识险智控 - 内部风控工作台（演示）</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./internal-risk-demo.css">
+</head>
+<body class="internal-risk-page">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo" aria-hidden="true">RF</div>
+            <div class="sidebar-brand">
+                <div class="sidebar-title">识险智控</div>
+                <div class="sidebar-subtitle">内部风控工作台</div>
+            </div>
+        </div>
+        <nav class="sidebar-nav" aria-label="内部风控模块">
+            <div class="sidebar-section-title">内部风控</div>
+            <button class="nav-item active" type="button" data-view="gates"><span class="nav-symbol">01</span><span>风险闸门</span><span class="nav-badge">2</span></button>
+            <button class="nav-item" type="button" data-view="ledger"><span class="nav-symbol">02</span><span>风险台账</span><span class="nav-badge">3</span></button>
+            <button class="nav-item" type="button" data-view="tasks"><span class="nav-symbol">03</span><span>整改任务</span><span class="nav-badge">4</span></button>
+            <button class="nav-item" type="button" data-view="reviews"><span class="nav-symbol">04</span><span>人工复核</span><span class="nav-badge">2</span></button>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="sidebar-avatar">演</div>
+            <div><div class="sidebar-footer-name">演示数据环境</div><div class="sidebar-footer-role">不连接后端</div></div>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div class="breadcrumb"><span>识险智控</span><span>/</span><span class="breadcrumb-current" id="breadcrumb">风险闸门</span></div>
+            <div class="topbar-actions"><span class="demo-status"><i></i>演示样例</span></div>
+        </header>
+
+        <section class="internal-view active" id="view-gates">
+            <div class="page-header">
+                <div><h1>科创风险闸门</h1><p>在关键经营节点完成材料核验、风险研判、整改和人工放行。</p></div>
+                <button class="btn btn-primary" id="open-gate-detail" type="button">查看待复核闸门</button>
+            </div>
+            <div class="page-body internal-body">
+                <div class="gate-summary" id="gate-summary"></div>
+                <section class="work-section"><div class="section-heading"><h2>项目关键节点</h2><span>按风险等级排序</span></div><div class="gate-grid" id="gate-list"></div></section>
+                <section class="detail-drawer" id="gate-detail" hidden aria-live="polite"></section>
+            </div>
+        </section>
+
+        <section class="internal-view" id="view-ledger">
+            <div class="page-header"><div><h1>风险台账</h1><p>风险事项与事实、法律依据、整改任务、复核状态保持可追溯关联。</p></div></div>
+            <div class="page-body internal-body"><div class="ledger-toolbar"><span class="filter-caption">全部风险</span><span class="filter-caption">高风险优先</span><span class="filter-caption">按最近更新</span></div><div class="ledger-list" id="ledger-list"></div></div>
+        </section>
+
+        <section class="internal-view" id="view-tasks">
+            <div class="page-header"><div><h1>整改任务</h1><p>将分析建议转换为可分派、可举证、可验收的行动。</p></div></div>
+            <div class="page-body internal-body"><div class="task-board" id="task-board"></div></div>
+        </section>
+
+        <section class="internal-view" id="view-reviews">
+            <div class="page-header"><div><h1>人工复核</h1><p>AI/RAG 给出建议和证据，放行与否由有权限的人员确认并留痕。</p></div></div>
+            <div class="page-body internal-body"><div class="review-list" id="review-list"></div></div>
+        </section>
+    </main>
+    <script src="./internal-risk-demo.js"></script>
+</body>
+</html>

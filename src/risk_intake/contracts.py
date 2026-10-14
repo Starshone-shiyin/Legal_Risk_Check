@@ -1,0 +1,2 @@
+﻿RISK_INTAKE_VERSION = "0.1.0"
+RISK_INTAKE_DATA_SOURCE = "fixture_sample"

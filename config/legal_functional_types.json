@@ -1,0 +1,258 @@
+{
+  "version": "0.4.7.2.4",
+  "purpose": "Configurable legal functional typing cues for offline diagnostics. This file does not drive retrieval, rerank, anchor injection, risk supplement, or answer generation.",
+  "functional_types": [
+    {
+      "id": "liability",
+      "label": "法律责任",
+      "description": "Penalty, compensation, administrative liability, civil liability, or criminal liability clauses."
+    },
+    {
+      "id": "definition",
+      "label": "定义条款",
+      "description": "Clauses that define legal terms, regulated objects, entities, or concepts."
+    },
+    {
+      "id": "rights_remedy",
+      "label": "权利救济",
+      "description": "Clauses that grant rights, remedies, complaint channels, correction, deletion, withdrawal, or review rights."
+    },
+    {
+      "id": "procedural",
+      "label": "程序要求",
+      "description": "Filing, reporting, assessment, approval, notice, deadline, material submission, or review process clauses."
+    },
+    {
+      "id": "operative_rule",
+      "label": "义务/责任规则",
+      "description": "Substantive obligations, prohibitions, conditions, duties, compliance actions, or required safeguards."
+    },
+    {
+      "id": "scope",
+      "label": "适用范围",
+      "description": "Applicability, jurisdiction, object scope, subject scope, or excluded scope clauses."
+    },
+    {
+      "id": "principle",
+      "label": "原则条款",
+      "description": "General principles, policy goals, fairness, necessity, proportionality, transparency, or good-faith clauses."
+    },
+    {
+      "id": "technical_standard",
+      "label": "技术标准",
+      "description": "Technical standard, guideline, recommended specification, or implementation detail clauses."
+    },
+    {
+      "id": "unrelated_or_contextual",
+      "label": "背景/边缘上下文",
+      "description": "Contextual or peripheral material that does not itself support the legal conclusion."
+    },
+    {
+      "id": "unclassified",
+      "label": "未分类",
+      "description": "Fallback when no stable functional type can be inferred."
+    }
+  ],
+  "operative_support_types": [
+    "operative_rule",
+    "procedural",
+    "rights_remedy",
+    "liability",
+    "technical_standard"
+  ],
+  "rules": [
+    {
+      "functional_type": "liability",
+      "priority": 100,
+      "confidence": "rule_high",
+      "contains": [
+        "法律责任",
+        "责令改正",
+        "责令",
+        "罚款",
+        "处罚",
+        "没收",
+        "吊销",
+        "赔偿",
+        "处分",
+        "追究刑事责任"
+      ],
+      "regex": [
+        "承担.{0,12}责任",
+        "构成犯罪",
+        "依法追究"
+      ]
+    },
+    {
+      "functional_type": "definition",
+      "priority": 90,
+      "confidence": "rule_high",
+      "contains": [
+        "本法所称",
+        "本条例所称",
+        "本办法所称",
+        "本规定所称",
+        "本标准所称",
+        "术语和定义"
+      ],
+      "regex": [
+        "是指",
+        "指.{1,80}的"
+      ]
+    },
+    {
+      "functional_type": "rights_remedy",
+      "priority": 80,
+      "confidence": "rule_medium",
+      "contains": [
+        "有权",
+        "投诉",
+        "举报",
+        "请求",
+        "撤回同意",
+        "查阅",
+        "复制",
+        "更正",
+        "删除",
+        "解释说明",
+        "拒绝"
+      ],
+      "regex": [
+        "可以.{0,20}投诉",
+        "可以.{0,20}举报",
+        "有权.{0,30}要求"
+      ]
+    },
+    {
+      "functional_type": "procedural",
+      "priority": 70,
+      "confidence": "rule_medium",
+      "contains": [
+        "备案",
+        "申报",
+        "申请",
+        "提交",
+        "评估",
+        "报告",
+        "通知",
+        "告知",
+        "审查",
+        "批准",
+        "许可",
+        "期限",
+        "工作日",
+        "重新评估",
+        "材料",
+        "申报纳税",
+        "办理登记",
+        "纳税地点",
+        "纳税义务发生时间",
+        "扣缴义务发生时间",
+        "计税期间",
+        "预缴税款",
+        "报关进口",
+        "征收管理",
+        "主管税务机关"
+      ],
+      "regex": [
+        "应当.{0,20}告知",
+        "应当.{0,20}通知",
+        "应当.{0,20}提交",
+        "应当.{0,20}申报",
+        "应当.{0,20}评估"
+      ]
+    },
+    {
+      "functional_type": "operative_rule",
+      "priority": 60,
+      "confidence": "rule_medium",
+      "contains": [
+        "应当",
+        "不得",
+        "禁止",
+        "必须",
+        "需取得",
+        "应取得",
+        "履行",
+        "采取",
+        "保护措施",
+        "安全措施",
+        "单独同意",
+        "书面同意",
+        "符合下列",
+        "方可",
+        "税率",
+        "征收率",
+        "应纳税额",
+        "计税方法",
+        "销项税额",
+        "进项税额",
+        "抵扣",
+        "免征",
+        "税收优惠",
+        "应税交易",
+        "扣缴义务人",
+        "起征点",
+        "组成计税价格",
+        "适用税率"
+      ],
+      "regex": [
+        "不得.{1,40}",
+        "应当.{1,60}",
+        "符合.{0,20}条件",
+        "采取.{0,20}措施"
+      ]
+    },
+    {
+      "functional_type": "scope",
+      "priority": 50,
+      "confidence": "rule_medium",
+      "contains": [
+        "适用本法",
+        "适用范围",
+        "本法适用于",
+        "本办法适用于",
+        "本规定适用于",
+        "境内",
+        "境外"
+      ],
+      "regex": [
+        "适用于",
+        "下列.{0,10}情形"
+      ]
+    },
+    {
+      "functional_type": "principle",
+      "priority": 65,
+      "confidence": "rule_medium",
+      "contains": [
+        "合法、正当、必要",
+        "公开、透明",
+        "公平、公正",
+        "平等、自愿、公平",
+        "诚实信用"
+      ],
+      "regex": [
+        "遵循.{0,30}原则"
+      ]
+    },
+    {
+      "functional_type": "principle",
+      "priority": 40,
+      "confidence": "rule_low",
+      "contains": [
+        "原则",
+        "合法",
+        "正当",
+        "必要",
+        "诚信",
+        "公开",
+        "透明",
+        "公平",
+        "公正",
+        "合理"
+      ],
+      "regex": []
+    }
+  ]
+}

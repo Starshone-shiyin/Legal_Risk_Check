@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "scenarios": [
+    {
+      "scenario_id": "china-semiconductor-ai-chain",
+      "title": "中国半导体与 AI 服务器产业链调试场景",
+      "industry": "半导体与人工智能算力",
+      "fixture_path": "tests/fixtures/developer_debug/china_semiconductor_ai_chain.json",
+      "internal_fixture_path": "tests/fixtures/developer_debug/internal_risk_workflow.json",
+      "intake_fixture_path": "tests/fixtures/developer_debug/risk_intake.json",
+      "chain_stages": ["半导体材料", "半导体硅片", "半导体制造设备", "晶圆代工", "封装测试", "芯片设计", "AI 服务器"],
+      "disclaimer": "本场景仅根据公开资料标注产业链位置，用于本地调试；不代表企业间存在已核实的采购、供货、投资或控制关系。"
+    }
+  ]
+}

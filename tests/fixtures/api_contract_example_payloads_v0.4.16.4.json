@@ -1,0 +1,297 @@
+{
+  "version": "0.4.16.4",
+  "scope": "offline api example payloads for frontend handoff",
+  "guardrails": {
+    "rag_query": "not_called",
+    "qdrant_access": "not_called",
+    "llm_access": "not_called",
+    "report_generation": "not_called",
+    "frontend_integration": "not_started"
+  },
+  "examples": {
+    "ask_request": {
+      "question": "企业计划将员工客户服务记录用于内部 AI 模型训练，是否存在个人信息合规风险？",
+      "k": 5,
+      "collection_name": "legal_knowledge",
+      "doc_type": "article",
+      "category": "数据合规",
+      "jurisdiction": "CN",
+      "debug": false
+    },
+    "ask_response": {
+      "answer": "该场景可能涉及个人信息处理目的变更、告知同意、最小必要和安全保护义务。建议先确认训练数据是否包含可识别个人信息，并补充合法性基础、告知文本和脱敏措施。",
+      "confidence_score": 0.82,
+      "answer_confidence": 0.8,
+      "retrieval_confidence": 0.84,
+      "needs_human_review": true,
+      "missing_evidence": [
+        "未提供员工或客户授权文本",
+        "未说明训练数据是否已匿名化"
+      ],
+      "risk_level": "medium",
+      "risk_types": [
+        "个人信息处理合规风险",
+        "数据安全管理风险"
+      ],
+      "risk_type_evidence": [
+        {
+          "risk_type": "个人信息处理合规风险",
+          "evidence_ref": "example-evidence-001",
+          "support": "涉及个人信息处理目的和方式变更，需要核对告知、同意或其他合法性基础。"
+        }
+      ],
+      "recommended_actions": [
+        "梳理训练数据字段并区分个人信息、敏感个人信息和匿名化数据",
+        "补充告知同意或其他合法性基础说明",
+        "建立训练数据脱敏、访问控制和留痕机制"
+      ],
+      "recommended_action_evidence": [
+        {
+          "action": "梳理训练数据字段并区分个人信息、敏感个人信息和匿名化数据",
+          "evidence_ref": "example-evidence-001",
+          "support": "风险判断依赖数据类型和处理目的。"
+        }
+      ],
+      "citation_integrity": {
+        "status": "example_only",
+        "unsupported_claims": []
+      },
+      "evidence_chain": [
+        {
+          "id": "example-evidence-001",
+          "law_name": "个人信息保护法",
+          "article": "第十三条、第十七条",
+          "jurisdiction": "CN",
+          "legal_functional_type": "义务条款",
+          "text": "处理个人信息应具有合法性基础，并向个人告知处理目的、方式和个人信息种类等事项。"
+        }
+      ],
+      "filters": {
+        "collection_name": "legal_knowledge",
+        "doc_type": "article",
+        "category": "数据合规",
+        "jurisdiction": "CN"
+      },
+      "debug_info": null
+    },
+    "risk_analyze_request": {
+      "scenario": "企业拟把客服聊天记录用于内部 AI 训练，记录中可能包含客户手机号、订单信息和投诉内容。",
+      "k": 5,
+      "collection_name": "legal_knowledge",
+      "doc_type": "article",
+      "category": "数据合规",
+      "jurisdiction": "CN",
+      "debug": false
+    },
+    "risk_analyze_response": {
+      "scenario": "企业拟把客服聊天记录用于内部 AI 训练，记录中可能包含客户手机号、订单信息和投诉内容。",
+      "summary": "该场景存在个人信息处理目的变更、敏感或高风险数据识别不足、训练数据安全控制不足等风险。当前信息不足以确认已经满足告知同意、最小必要和安全保护要求。",
+      "risk_level": "medium",
+      "risk_types": [
+        "个人信息处理合规风险",
+        "数据安全管理风险"
+      ],
+      "risk_categories": [
+        {
+          "category": "数据合规",
+          "level": "medium",
+          "reason": "训练用途与原客服用途可能不同，需要重新核对合法性基础。"
+        }
+      ],
+      "legal_basis": [
+        {
+          "law_name": "个人信息保护法",
+          "article": "第十三条、第十七条",
+          "evidence_ref": "example-evidence-001"
+        }
+      ],
+      "recommended_actions": [
+        "完成数据字段盘点和个人信息分类",
+        "评估是否需要重新告知并取得同意",
+        "对训练集执行脱敏、访问控制和日志留痕"
+      ],
+      "confidence": {
+        "overall": 0.82,
+        "retrieval": 0.84,
+        "answer": 0.8
+      },
+      "needs_human_review": true,
+      "missing_evidence": [
+        "未提供现有隐私政策或授权文本",
+        "未说明数据脱敏方式"
+      ],
+      "citation_integrity": {
+        "status": "example_only",
+        "unsupported_claims": []
+      },
+      "risk_type_evidence": [
+        {
+          "risk_type": "个人信息处理合规风险",
+          "evidence_ref": "example-evidence-001"
+        }
+      ],
+      "recommended_action_evidence": [
+        {
+          "action": "评估是否需要重新告知并取得同意",
+          "evidence_ref": "example-evidence-001"
+        }
+      ],
+      "evidence_chain": [
+        {
+          "id": "example-evidence-001",
+          "law_name": "个人信息保护法",
+          "article": "第十三条、第十七条",
+          "jurisdiction": "CN",
+          "legal_functional_type": "义务条款",
+          "text": "处理个人信息应具有合法性基础，并向个人告知处理目的、方式和个人信息种类等事项。"
+        }
+      ],
+      "filters": {
+        "collection_name": "legal_knowledge",
+        "doc_type": "article",
+        "category": "数据合规",
+        "jurisdiction": "CN"
+      },
+      "debug_info": null
+    },
+    "risk_report_request": {
+      "scenario": "企业拟把客服聊天记录用于内部 AI 训练，记录中可能包含客户手机号、订单信息和投诉内容。",
+      "k": 5,
+      "collection_name": "legal_knowledge",
+      "doc_type": "article",
+      "category": "数据合规",
+      "jurisdiction": "CN",
+      "debug": false
+    },
+    "risk_report_response": {
+      "title": "客服聊天记录用于 AI 训练的合规风险报告",
+      "scenario": "企业拟把客服聊天记录用于内部 AI 训练，记录中可能包含客户手机号、订单信息和投诉内容。",
+      "executive_summary": "本报告样例显示：该场景的核心风险在于训练用途是否超出原收集目的、是否具备合法性基础、是否完成充分告知，以及训练数据安全控制是否充分。",
+      "risk_level": "medium",
+      "risk_findings": [
+        {
+          "finding": "训练用途可能构成个人信息处理目的变更",
+          "risk_level": "medium",
+          "evidence_ref": "example-evidence-001"
+        },
+        {
+          "finding": "现有材料不足以确认数据已匿名化或完成有效脱敏",
+          "risk_level": "medium",
+          "evidence_ref": "example-evidence-001"
+        }
+      ],
+      "action_plan": [
+        {
+          "action": "补充数据字段清单和处理目的说明",
+          "priority": "high",
+          "owner": "legal_compliance"
+        },
+        {
+          "action": "确认告知同意或其他合法性基础",
+          "priority": "high",
+          "owner": "legal_compliance"
+        },
+        {
+          "action": "落实脱敏、访问控制和日志留痕",
+          "priority": "medium",
+          "owner": "security"
+        }
+      ],
+      "legal_basis": [
+        {
+          "law_name": "个人信息保护法",
+          "article": "第十三条、第十七条",
+          "evidence_ref": "example-evidence-001"
+        }
+      ],
+      "confidence": {
+        "overall": 0.82,
+        "retrieval": 0.84,
+        "answer": 0.8
+      },
+      "human_review_required": true,
+      "review_reasons": [
+        "样例场景缺少授权文本和脱敏说明，真实审阅需要补充事实材料。"
+      ],
+      "citation_integrity": {
+        "status": "example_only",
+        "unsupported_claims": []
+      },
+      "evidence_chain": [
+        {
+          "id": "example-evidence-001",
+          "law_name": "个人信息保护法",
+          "article": "第十三条、第十七条",
+          "jurisdiction": "CN",
+          "legal_functional_type": "义务条款",
+          "text": "处理个人信息应具有合法性基础，并向个人告知处理目的、方式和个人信息种类等事项。"
+        }
+      ],
+      "source_analysis": {
+        "status": "example_only",
+        "source_count": 1,
+        "jurisdictions": [
+          "CN"
+        ]
+      }
+    },
+    "risk_report_export_markdown": "# 客服聊天记录用于 AI 训练的合规风险报告\n\n## 摘要\n该场景可能存在个人信息处理目的变更、告知同意不足和训练数据安全控制不足等风险。\n\n## 建议动作\n1. 补充数据字段清单和处理目的说明。\n2. 确认告知同意或其他合法性基础。\n3. 落实脱敏、访问控制和日志留痕。\n",
+    "risk_report_export_json": {
+      "title": "客服聊天记录用于 AI 训练的合规风险报告",
+      "scenario": "企业拟把客服聊天记录用于内部 AI 训练，记录中可能包含客户手机号、订单信息和投诉内容。",
+      "executive_summary": "该 JSON 样例与报告响应模型保持兼容，用于前端离线联调。",
+      "risk_level": "medium",
+      "risk_findings": [
+        {
+          "finding": "训练用途可能构成个人信息处理目的变更",
+          "risk_level": "medium",
+          "evidence_ref": "example-evidence-001"
+        }
+      ],
+      "action_plan": [
+        {
+          "action": "确认告知同意或其他合法性基础",
+          "priority": "high",
+          "owner": "legal_compliance"
+        }
+      ],
+      "legal_basis": [
+        {
+          "law_name": "个人信息保护法",
+          "article": "第十三条、第十七条",
+          "evidence_ref": "example-evidence-001"
+        }
+      ],
+      "confidence": {
+        "overall": 0.82,
+        "retrieval": 0.84,
+        "answer": 0.8
+      },
+      "human_review_required": true,
+      "review_reasons": [
+        "样例场景缺少授权文本和脱敏说明，真实审阅需要补充事实材料。"
+      ],
+      "citation_integrity": {
+        "status": "example_only",
+        "unsupported_claims": []
+      },
+      "evidence_chain": [
+        {
+          "id": "example-evidence-001",
+          "law_name": "个人信息保护法",
+          "article": "第十三条、第十七条",
+          "jurisdiction": "CN",
+          "legal_functional_type": "义务条款",
+          "text": "处理个人信息应具有合法性基础，并向个人告知处理目的、方式和个人信息种类等事项。"
+        }
+      ],
+      "source_analysis": {
+        "status": "example_only",
+        "source_count": 1,
+        "jurisdictions": [
+          "CN"
+        ]
+      }
+    }
+  }
+}

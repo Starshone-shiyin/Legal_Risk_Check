@@ -1,0 +1,232 @@
+{
+  "version": "0.4.7.2.4",
+  "purpose": "Golden fixtures for offline legal functional typing quality checks. These fixtures do not drive retrieval, rerank, prompt, anchor, risk supplement, or eval cases.",
+  "cases": [
+    {
+      "id": "definition_basic_law_term",
+      "expected_functional_type": "definition",
+      "text": "本法所称个人信息，是指以电子或者其他方式记录的与已识别或者可识别的自然人有关的各种信息。",
+      "metadata": {
+        "source": "示例法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "definition_standard_terms",
+      "expected_functional_type": "technical_standard",
+      "text": "术语和定义：个人信息控制者是指有能力决定个人信息处理目的、方式等的组织或者个人。",
+      "metadata": {
+        "source": "示例标准 GB_T_00000",
+        "document_type": "标准"
+      }
+    },
+    {
+      "id": "principle_good_faith_necessity",
+      "expected_functional_type": "principle",
+      "text": "处理个人信息应当遵循合法、正当、必要和诚信原则，不得通过误导、欺诈、胁迫等方式处理个人信息。",
+      "metadata": {
+        "source": "示例法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "operative_security_obligation",
+      "expected_functional_type": "operative_rule",
+      "text": "个人信息处理者应当采取必要措施保障所处理的个人信息安全，防止未经授权的访问以及泄露、篡改、丢失。",
+      "metadata": {
+        "source": "示例法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "operative_prohibition",
+      "expected_functional_type": "operative_rule",
+      "text": "任何组织、个人不得非法收集、使用、加工、传输他人个人信息，不得非法买卖、提供或者公开他人个人信息。",
+      "metadata": {
+        "source": "示例法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "procedural_security_assessment_submission",
+      "expected_functional_type": "procedural",
+      "text": "数据处理者向境外提供重要数据，应当通过所在地省级网信部门向国家网信部门申报数据出境安全评估。",
+      "metadata": {
+        "source": "示例办法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "procedural_notification_deadline",
+      "expected_functional_type": "procedural",
+      "text": "发生或者可能发生个人信息泄露、篡改、丢失的，个人信息处理者应当立即采取补救措施，并通知履行个人信息保护职责的部门和个人。",
+      "metadata": {
+        "source": "示例法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "liability_fine_and_order",
+      "expected_functional_type": "liability",
+      "text": "违反本法规定处理个人信息的，由履行个人信息保护职责的部门责令改正，给予警告，没收违法所得；情节严重的，并处罚款。",
+      "metadata": {
+        "source": "示例法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "rights_delete_and_correct",
+      "expected_functional_type": "rights_remedy",
+      "text": "个人发现其个人信息不准确或者不完整的，有权请求个人信息处理者更正、补充。",
+      "metadata": {
+        "source": "示例法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "rights_withdraw_consent",
+      "expected_functional_type": "rights_remedy",
+      "text": "基于个人同意处理个人信息的，个人有权撤回其同意，个人信息处理者应当提供便捷的撤回同意的方式。",
+      "metadata": {
+        "source": "示例法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "scope_applicability",
+      "expected_functional_type": "scope",
+      "text": "在中华人民共和国境内处理自然人个人信息的活动，适用本法。",
+      "metadata": {
+        "source": "示例法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "technical_standard_metadata",
+      "expected_functional_type": "technical_standard",
+      "text": "个人信息控制者宜建立个人信息安全影响评估制度，并保存评估报告。",
+      "metadata": {
+        "source": "信息安全技术 示例规范 GB_T_00000",
+        "document_type": "标准"
+      }
+    },
+    {
+      "id": "metadata_priority_over_text",
+      "expected_functional_type": "liability",
+      "text": "本法所称测试术语，是指用于测试的术语。",
+      "metadata": {
+        "source": "示例法",
+        "document_type": "法律法规",
+        "functional_type": "liability"
+      }
+    },
+    {
+      "id": "unclassified_background_context",
+      "expected_functional_type": "unclassified",
+      "text": "国家积极参与国际规则制定，促进国际交流与合作，推动规则、标准等互认。",
+      "metadata": {
+        "source": "示例法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "boundary_definition_should_not_be_obligation",
+      "expected_functional_type": "definition",
+      "text": "本办法所称重要数据，是指一旦遭到篡改、破坏、泄露或者非法获取、非法利用，可能危害国家安全、经济运行、社会稳定的数据。",
+      "metadata": {
+        "source": "示例办法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "boundary_liability_over_procedure",
+      "expected_functional_type": "liability",
+      "text": "未按照规定提交评估材料的，由主管部门责令改正；拒不改正的，处以罚款。",
+      "metadata": {
+        "source": "示例办法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "tax_rate_substantive_rule",
+      "expected_functional_type": "operative_rule",
+      "text": "纳税人销售货物、加工修理修配服务，除另有规定外，税率为百分之十三。",
+      "metadata": {
+        "source": "示例税法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "tax_deduction_substantive_rule",
+      "expected_functional_type": "operative_rule",
+      "text": "应纳税额为当期销项税额抵扣当期进项税额后的余额。",
+      "metadata": {
+        "source": "示例税法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "tax_exemption_substantive_rule",
+      "expected_functional_type": "operative_rule",
+      "text": "小规模纳税人发生应税交易，销售额未达到起征点的，免征增值税。",
+      "metadata": {
+        "source": "示例税法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "tax_declaration_procedure",
+      "expected_functional_type": "procedural",
+      "text": "纳税人应当向主管税务机关申报纳税，并按照规定报送相关材料。",
+      "metadata": {
+        "source": "示例税法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "tax_registration_procedure",
+      "expected_functional_type": "procedural",
+      "text": "小规模纳税人可以向主管税务机关办理登记，按照一般计税方法计算缴纳增值税。",
+      "metadata": {
+        "source": "示例税法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "tax_liability_priority_over_tax_cue",
+      "expected_functional_type": "liability",
+      "text": "纳税人违反本法规定的，由税务机关责令改正，并依法处以罚款。",
+      "metadata": {
+        "source": "示例税法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "structural_law_title_context",
+      "expected_functional_type": "unrelated_or_contextual",
+      "text": "中华人民共和国增值税法",
+      "metadata": {
+        "source": "中华人民共和国增值税法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "structural_chapter_heading_context",
+      "expected_functional_type": "unrelated_or_contextual",
+      "text": "第二章 税 率",
+      "metadata": {
+        "source": "中华人民共和国增值税法",
+        "document_type": "法律法规"
+      }
+    },
+    {
+      "id": "structural_toc_context",
+      "expected_functional_type": "unrelated_or_contextual",
+      "text": "目 录",
+      "metadata": {
+        "source": "中华人民共和国增值税法",
+        "document_type": "法律法规"
+      }
+    }
+  ]
+}

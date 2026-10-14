@@ -1,0 +1,15 @@
+flowchart LR
+    U[用户问题 / 合同附件] --> W[Web 工作台]
+    W --> API[FastAPI API]
+    API --> RAG[RAG 检索编排]
+    RAG --> Q[Qdrant
+法律向量与 BM25 索引]
+    RAG --> RR[Cross-Encoder
+候选重排]
+    RAG --> E[证据链与引用校验]
+    E --> LLM[LLM 受约束生成]
+    LLM --> API
+    API --> W
+    API --> EXT[受控外部风险服务]
+    EXT --> W
+    EXT -.背景事实，不替代法源.-> RAG

@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "scope": "developer-debug isolated workflow fixture",
+  "workflow": {
+    "company_id": "demo-ai-enterprise",
+    "as_of": "2026-08-02T00:00:00Z",
+    "risk_items": [],
+    "gates": [],
+    "remediation_tasks": [],
+    "manual_reviews": [],
+    "reminders": [],
+    "risk_acceptances": [],
+    "risk_events": []
+  }
+}
